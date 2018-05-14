@@ -1,0 +1,41 @@
+variable_identifier
+	^[\w{1}[\w_\d}]*$
+
+function_identifier
+	^[\w{1}[\w_\d}]*$
+
+loop_identifier
+	^[\w{1}[\w_\d}]*$
+
+numbr_literal
+	^-?[\d]+$
+
+numbar_literal
+	^-?[\d]+.[\d]+$ 
+
+yarn_literal
+	^“.*”$
+
+troof_literal
+	^WIN$|^FAIL$
+
+type_literal
+	((^NUMBR$)|(^NUMBAR$)|(^YARN$)|(^TROOF))$ 
+
+HAI
+	^HAI$
+
+KTHXBYE
+	^KTHXBYE$
+
+BTW
+	^BTW$
+
+OBTW
+	^OBTW$
+
+TLDR
+	^TLDR$
+
+I_HAS_A 
+	^I\s+HAS\s+A\s+$
