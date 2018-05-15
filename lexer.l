@@ -1,65 +1,66 @@
 %{
 int yylineno;
+#include <stdio.h>
+#include "y.tab.h"
+int c;
+extern int yylval;
+extern FILE *yyin;
 %}
+
 %%
-(I) printf("keyword: I\t");
-(HAS) printf("keyword: HAS\t");
-(A) printf("keyword: A\t");
-(ITZ) printf("keyword: ITZ\t");
-(R) printf("keyword: R\t");
-(OF) printf("keyword: OF\t");
-(AN) printf("keyword: AN\t");
-(SUM) printf("keyword: addition\t");
-(DIFF) printf("keyword: subtraction\t");
-(QUOSHUNT) printf("keyword: division\t");
-(PRODUKT) printf("keyword: multiplication\t");
-(MOD) printf("keyword: modulo\t");
-(BIGGR) printf("keyword: BIGGR\t");
-(SMALLR) printf("keyword: SMALLR\t");
-(BOTH) printf("keyword: BOTH\t");
-(EITHER) printf("keyword: EITHER\t");
-(WON) printf("keyword: WON\t");
-(NOT) printf("keyword: NOT\t");
-(ANY) printf("keyword: ANY\t");
-(ALL) printf("keyword: ALL\t");
-(SAEM) printf("keyword: SAEM\t");
-(DIFFRINT) printf("keyword: DIFFRINT\t");
-(SMOOSH) printf("keyword: SMOOSH\t");
-(MAEK) printf("keyword: MAEK\t");
-(IS) printf("keyword: IS\t");
-(NOW) printf("keyword: NOW\t");
-(VISIBLE) printf("keyword: VISIBLE\t");
-(GIMMEH) printf("keyword: GIMMEH\t");
-(O) printf("keyword: O\t");
-(RLY) printf("keyword: RLY\t");
-(RLY\?) printf("keyword: RLY?\t");
-(YA) printf("keyword: YA\t");
-(MEBBE) printf("keyword: MEBBE\t");
-(NO) printf("keyword: NO\t");
-(WAI) printf("keyword: WAI\t");
-(OIC)  printf("keyword: OIC\t"); 
-(WTF?)  printf("keyword: WTF?\t"); 
-(OMG)  printf("keyword: OMG\t"); 
-(OMGWTF)  printf("keyword: OMGWTF\t"); 
-(IM) printf("keyowrd: IM\t");
-(IN) printf("keyword: IN\t");
-(YR)  printf("keyword: YR\t"); 
-(UPPIN)  printf("keyword: UPPIN\t"); 
-(NERFIN)  printf("keyword: NERFIN\t");  
-(TIL)  printf("keyword: TIL\t"); 
-(WILE)  printf("keyword: WILE\t"); 
-(OUTTA) printf("keyword: OUTTA\t");
-(WIN|FAIL) printf("TROOF LITERAL");
-((NUMBR)|(NUMBAR)|(YARN)|(TROOF)) printf("TYPE LITERAL");
-(-?[0-9]+) printf("NUMBR LITERAL");
-(-?[0-9]+\.[0-9]+) printf("NUMBAR LITERAL");
-(\".*\") printf("YARN LITERAL");
-(HAI) printf("keyword: HAI\t");
-(KTHXBYE) printf("keyword: KTHXBYE\t");
-([a-zA-Z]{1}[a-zA-Z]+) printf("IDENTIFIER");
+(I) {printf("keyword:\tI\n"); return I; }
+(HAS) {printf("keyword: HAS\n"); return HAS;}
+(A) {printf("keyword: A\n"); return A;}
+(ITZ) {printf("keyword: ITZ\n"); return ITZ;}
+(R) {printf("keyword: R\n"); return R;}
+(OF) {printf("keyword: OF\n"); return OF;}
+(AN) {printf("keyword: AN\n"); return AN;}
+(SUM) {printf("keyword: addition\n"); return SUM;}
+(DIFF) {printf("keyword: subtraction\n"); return DIFF;}
+(QUOSHUNT) {printf("keyword: division\n"); return QUOSHUNT;}
+(PRODUKT) {printf("keyword: multiplication\n"); return PRODUKT;}
+(MOD) {printf("keyword: modulo\n"); return MOD;}
+(BIGGR) {printf("keyword: BIGGR\n"); return BIGGR;}
+(SMALLR) {printf("keyword: SMALLR\n"); return SMALLR;}
+(BOTH) {printf("keyword: BOTH\n"); return BOTH;}
+(EITHER) {printf("keyword: EITHER\n"); return EITHER;}
+(WON) {printf("keyword: WON\n"); return WON;}
+(NOT) {printf("keyword: NOT\n"); return NOT;}
+(ANY) {printf("keyword: ANY\n"); return ANY;}
+(ALL) {printf("keyword: ALL\n"); return ALL;}
+(SAEM) {printf("keyword: SAEM\n"); return SAEM;}
+(DIFFRINT) {printf("keyword: DIFFRINT\n"); return DIFFRINT;}
+(SMOOSH) {printf("keyword: SMOOSH\n"); return SMOOSH;}
+(MAEK) {printf("keyword: MAEK\n"); return MAEK;}
+(IS) {printf("keyword: IS\n"); return IS;}
+(NOW) {printf("keyword: NOW\n"); return NOW;}
+(VISIBLE) {printf("keyword: VISIBLE\n"); return VISIBLE;}
+(GIMMEH) {printf("keyword: GIMMEH\n"); return GIMMEH;}
+(O) {printf("keyword: O\n"); return O;}
+(RLY) {printf("keyword: RLY\n"); return RLY;}
+(RLY\?) {printf("keyword: RLY?\n"); return RLY_Q;}
+(YA) {printf("keyword: YA\n"); return YA;}
+(MEBBE) {printf("keyword: MEBBE\n"); return MEBBE;}
+(NO) {printf("keyword: NO\n"); return NO;}
+(WAI) {printf("keyword: WAI\n"); return WAI;}
+(OIC)  {printf("keyword: OIC\n"); return OIC;}
+(WTF?)  {printf("keyword: WTF?\n"); return WTF_Q;}
+(OMG)  {printf("keyword: OMG\n"); return OMG;}
+(OMGWTF)  {printf("keyword: OMGWTF\n"); return OMGWTF;}
+(IM) {printf("keyowrd: IM\n"); return IM;}
+(IN) {printf("keyword: IN\n"); return IN;}
+(YR)  {printf("keyword: YR\n"); return YR;}
+(UPPIN)  {printf("keyword: UPPIN\n"); return UPPIN;}
+(NERFIN)  {printf("keyword: NERFIN\n");  return NERFIN;}
+(TIL)  {printf("keyword: TIL\n"); return TIL;}
+(WILE)  {printf("keyword: WILE\n"); return WILE;}
+(OUTTA) {printf("keyword: OUTTA\n"); return OUTTA;}
+(WIN|FAIL) {printf("TROOF LITERAL"); return TROOF_LITERAL;}
+((NUMBR)|(NUMBAR)|(YARN)|(TROOF)) {printf("TYPE LITERAL"); return TYPE_LITERAL;}
+(-?[0-9]+) {printf("NUMBR LITERAL"); return NUMBR;}
+(-?[0-9]+\.[0-9]+) {printf("NUMBAR LITERAL"); return NUMBAR;}
+(\".*\") {printf("YARN LITERAL"); return YARN_LITERAL;}
+(HAI) {printf("keyword: HAI\n"); return HAI;}
+(KTHXBYE) {printf("keyword: KTHXBYE\n"); return KTHXBYE;}
+([a-zA-Z]{1}[a-zA-Z]+) {printf("IDENTIFIER"); return IDENTIFIER;}
 %%
-int main(int argc, char *argv[]) {
-	yyin = fopen(argv[1], "r");
-	yylex();
-	fclose(yyin);
-}

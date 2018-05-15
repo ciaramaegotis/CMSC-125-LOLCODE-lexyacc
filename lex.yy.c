@@ -568,7 +568,12 @@ char *yytext;
 #line 1 "lexer.l"
 #line 2 "lexer.l"
 int yylineno;
-#line 572 "lex.yy.c"
+#include <stdio.h>
+#include "y.tab.h"
+int c;
+extern int yylval;
+extern FILE *yyin;
+#line 577 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -786,9 +791,9 @@ YY_DECL
 		}
 
 	{
-#line 4 "lexer.l"
+#line 10 "lexer.l"
 
-#line 792 "lex.yy.c"
+#line 797 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -847,285 +852,285 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 5 "lexer.l"
-printf("keyword: I\t");
+#line 11 "lexer.l"
+{printf("keyword:\tI\n"); return I; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 6 "lexer.l"
-printf("keyword: HAS\t");
+#line 12 "lexer.l"
+{printf("keyword: HAS\n"); return HAS;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 7 "lexer.l"
-printf("keyword: A\t");
+#line 13 "lexer.l"
+{printf("keyword: A\n"); return A;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 8 "lexer.l"
-printf("keyword: ITZ\t");
+#line 14 "lexer.l"
+{printf("keyword: ITZ\n"); return ITZ;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 9 "lexer.l"
-printf("keyword: R\t");
+#line 15 "lexer.l"
+{printf("keyword: R\n"); return R;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 10 "lexer.l"
-printf("keyword: OF\t");
+#line 16 "lexer.l"
+{printf("keyword: OF\n"); return OF;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 11 "lexer.l"
-printf("keyword: AN\t");
+#line 17 "lexer.l"
+{printf("keyword: AN\n"); return AN;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 12 "lexer.l"
-printf("keyword: addition\t");
+#line 18 "lexer.l"
+{printf("keyword: addition\n"); return SUM;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 13 "lexer.l"
-printf("keyword: subtraction\t");
+#line 19 "lexer.l"
+{printf("keyword: subtraction\n"); return DIFF;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 14 "lexer.l"
-printf("keyword: division\t");
+#line 20 "lexer.l"
+{printf("keyword: division\n"); return QUOSHUNT;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 15 "lexer.l"
-printf("keyword: multiplication\t");
+#line 21 "lexer.l"
+{printf("keyword: multiplication\n"); return PRODUKT;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 16 "lexer.l"
-printf("keyword: modulo\t");
+#line 22 "lexer.l"
+{printf("keyword: modulo\n"); return MOD;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 17 "lexer.l"
-printf("keyword: BIGGR\t");
+#line 23 "lexer.l"
+{printf("keyword: BIGGR\n"); return BIGGR;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 18 "lexer.l"
-printf("keyword: SMALLR\t");
+#line 24 "lexer.l"
+{printf("keyword: SMALLR\n"); return SMALLR;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 19 "lexer.l"
-printf("keyword: BOTH\t");
+#line 25 "lexer.l"
+{printf("keyword: BOTH\n"); return BOTH;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 20 "lexer.l"
-printf("keyword: EITHER\t");
+#line 26 "lexer.l"
+{printf("keyword: EITHER\n"); return EITHER;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 21 "lexer.l"
-printf("keyword: WON\t");
+#line 27 "lexer.l"
+{printf("keyword: WON\n"); return WON;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 22 "lexer.l"
-printf("keyword: NOT\t");
+#line 28 "lexer.l"
+{printf("keyword: NOT\n"); return NOT;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 23 "lexer.l"
-printf("keyword: ANY\t");
+#line 29 "lexer.l"
+{printf("keyword: ANY\n"); return ANY;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 24 "lexer.l"
-printf("keyword: ALL\t");
+#line 30 "lexer.l"
+{printf("keyword: ALL\n"); return ALL;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 25 "lexer.l"
-printf("keyword: SAEM\t");
+#line 31 "lexer.l"
+{printf("keyword: SAEM\n"); return SAEM;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 26 "lexer.l"
-printf("keyword: DIFFRINT\t");
+#line 32 "lexer.l"
+{printf("keyword: DIFFRINT\n"); return DIFFRINT;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 27 "lexer.l"
-printf("keyword: SMOOSH\t");
+#line 33 "lexer.l"
+{printf("keyword: SMOOSH\n"); return SMOOSH;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 28 "lexer.l"
-printf("keyword: MAEK\t");
+#line 34 "lexer.l"
+{printf("keyword: MAEK\n"); return MAEK;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 29 "lexer.l"
-printf("keyword: IS\t");
+#line 35 "lexer.l"
+{printf("keyword: IS\n"); return IS;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 30 "lexer.l"
-printf("keyword: NOW\t");
+#line 36 "lexer.l"
+{printf("keyword: NOW\n"); return NOW;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 31 "lexer.l"
-printf("keyword: VISIBLE\t");
+#line 37 "lexer.l"
+{printf("keyword: VISIBLE\n"); return VISIBLE;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 32 "lexer.l"
-printf("keyword: GIMMEH\t");
+#line 38 "lexer.l"
+{printf("keyword: GIMMEH\n"); return GIMMEH;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 33 "lexer.l"
-printf("keyword: O\t");
+#line 39 "lexer.l"
+{printf("keyword: O\n"); return O;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 34 "lexer.l"
-printf("keyword: RLY\t");
+#line 40 "lexer.l"
+{printf("keyword: RLY\n"); return RLY;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 35 "lexer.l"
-printf("keyword: RLY?\t");
+#line 41 "lexer.l"
+{printf("keyword: RLY?\n"); return RLY_Q;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 36 "lexer.l"
-printf("keyword: YA\t");
+#line 42 "lexer.l"
+{printf("keyword: YA\n"); return YA;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 37 "lexer.l"
-printf("keyword: MEBBE\t");
+#line 43 "lexer.l"
+{printf("keyword: MEBBE\n"); return MEBBE;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 38 "lexer.l"
-printf("keyword: NO\t");
+#line 44 "lexer.l"
+{printf("keyword: NO\n"); return NO;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 39 "lexer.l"
-printf("keyword: WAI\t");
+#line 45 "lexer.l"
+{printf("keyword: WAI\n"); return WAI;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 40 "lexer.l"
-printf("keyword: OIC\t"); 
+#line 46 "lexer.l"
+{printf("keyword: OIC\n"); return OIC;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 41 "lexer.l"
-printf("keyword: WTF?\t"); 
+#line 47 "lexer.l"
+{printf("keyword: WTF?\n"); return WTF_Q;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 42 "lexer.l"
-printf("keyword: OMG\t"); 
+#line 48 "lexer.l"
+{printf("keyword: OMG\n"); return OMG;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 43 "lexer.l"
-printf("keyword: OMGWTF\t"); 
+#line 49 "lexer.l"
+{printf("keyword: OMGWTF\n"); return OMGWTF;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 44 "lexer.l"
-printf("keyowrd: IM\t");
+#line 50 "lexer.l"
+{printf("keyowrd: IM\n"); return IM;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 45 "lexer.l"
-printf("keyword: IN\t");
+#line 51 "lexer.l"
+{printf("keyword: IN\n"); return IN;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 46 "lexer.l"
-printf("keyword: YR\t"); 
+#line 52 "lexer.l"
+{printf("keyword: YR\n"); return YR;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 47 "lexer.l"
-printf("keyword: UPPIN\t"); 
+#line 53 "lexer.l"
+{printf("keyword: UPPIN\n"); return UPPIN;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 48 "lexer.l"
-printf("keyword: NERFIN\t");  
+#line 54 "lexer.l"
+{printf("keyword: NERFIN\n");  return NERFIN;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 49 "lexer.l"
-printf("keyword: TIL\t"); 
+#line 55 "lexer.l"
+{printf("keyword: TIL\n"); return TIL;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 50 "lexer.l"
-printf("keyword: WILE\t"); 
+#line 56 "lexer.l"
+{printf("keyword: WILE\n"); return WILE;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 51 "lexer.l"
-printf("keyword: OUTTA\t");
+#line 57 "lexer.l"
+{printf("keyword: OUTTA\n"); return OUTTA;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 52 "lexer.l"
-printf("TROOF LITERAL");
+#line 58 "lexer.l"
+{printf("TROOF LITERAL"); return TROOF_LITERAL;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 53 "lexer.l"
-printf("TYPE LITERAL");
+#line 59 "lexer.l"
+{printf("TYPE LITERAL"); return TYPE_LITERAL;}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 54 "lexer.l"
-printf("NUMBR LITERAL");
+#line 60 "lexer.l"
+{printf("NUMBR LITERAL"); return NUMBR;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 55 "lexer.l"
-printf("NUMBAR LITERAL");
+#line 61 "lexer.l"
+{printf("NUMBAR LITERAL"); return NUMBAR;}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 56 "lexer.l"
-printf("YARN LITERAL");
+#line 62 "lexer.l"
+{printf("YARN LITERAL"); return YARN_LITERAL;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 57 "lexer.l"
-printf("keyword: HAI\t");
+#line 63 "lexer.l"
+{printf("keyword: HAI\n"); return HAI;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 58 "lexer.l"
-printf("keyword: KTHXBYE\t");
+#line 64 "lexer.l"
+{printf("keyword: KTHXBYE\n"); return KTHXBYE;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 59 "lexer.l"
-printf("IDENTIFIER");
+#line 65 "lexer.l"
+{printf("IDENTIFIER"); return IDENTIFIER;}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 60 "lexer.l"
+#line 66 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 1129 "lex.yy.c"
+#line 1134 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2126,11 +2131,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 60 "lexer.l"
+#line 66 "lexer.l"
 
 
-int main(int argc, char *argv[]) {
-	yyin = fopen(argv[1], "r");
-	yylex();
-	fclose(yyin);
-}
+
