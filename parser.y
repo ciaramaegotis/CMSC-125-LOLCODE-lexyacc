@@ -2,7 +2,9 @@
 #include <stdio.h>
 extern FILE *yyin;
 int regs[26];
-float ITValue = 0;
+float ITValue[100];
+int flagOperation = 0;
+int currentIndexofIT = 0;
 %}
 
 
@@ -44,28 +46,64 @@ variable_declaration: I HAS A IDENTIFIER
 
 number_expression: SUM OF number_expression AN number_expression
                     {
-                      
-                      printf("%f", ITValue);
+                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] + ITValue[currentIndexofIT-1]);
+                      ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] + ITValue[currentIndexofIT-1];
+                      currentIndexofIT--;
                     }
                    |
                    DIFF OF number_expression AN number_expression
-                   {return 3;}
+                   {
+                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] - ITValue[currentIndexofIT-1]);
+                      ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] - ITValue[currentIndexofIT-1];
+                      currentIndexofIT--;
+                   }
                    |
                    PRODUKT OF number_expression AN number_expression
+                   {
+                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] * ITValue[currentIndexofIT-1]);
+                      ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] * ITValue[currentIndexofIT-1];
+                      currentIndexofIT--;
+                   }
                    |
                    QUOSHUNT OF number_expression AN number_expression
+                   {
+                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] / ITValue[currentIndexofIT-1]);
+                      ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] / ITValue[currentIndexofIT-1];
+                      currentIndexofIT--;
+                   }
                    |
                    MOD OF number_expression AN number_expression
+                   {
+                      printf("\nAnswer: %f\n", (int)ITValue[currentIndexofIT-2] % (int)ITValue[currentIndexofIT-1]);
+                      ITValue[currentIndexofIT-2] = (int) ITValue[currentIndexofIT-2] % (int) ITValue[currentIndexofIT-1];
+                      currentIndexofIT--;               
+                   }
                    |
                    BIGGR OF number_expression AN number_expression
+                   {
+                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] > ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1]);
+                      ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] > ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1];
+                      currentIndexofIT--;     
+                   }
                    |
                    SMALLR OF number_expression AN number_expression
+                   {
+                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] < ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1]);
+                      ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] < ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1];
+                      currentIndexofIT--; 
+                   }
                    |
                    NUMBR
-                   {ITValue = $1;}
+                   {
+                    ITValue[currentIndexofIT] = $1;
+                    ++currentIndexofIT;
+                   }
                    |
                    NUMBAR
-                   {ITValue = $1;}
+                   {
+                    ITValue[currentIndexofIT] = $1;
+                    ++currentIndexofIT;
+                   }
 
 troof_expression: TROOF_LITERAL
                   |
@@ -97,6 +135,9 @@ output: VISIBLE troof_expression
 concatenation:
 
 variable_assignment:  IDENTIFIER R number_expression
+                      {
+                        printf("\n%s is %f\n", $1, ITValue[currentIndexofIT-1]);
+                      }
                       |
                       IDENTIFIER R troof_expression
                       |
