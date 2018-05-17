@@ -57,9 +57,15 @@ extern FILE *yyin;
 (OUTTA) {printf("keyword: OUTTA\n"); return OUTTA;}
 (WIN|FAIL) {printf("TROOF LITERAL"); return TROOF_LITERAL;}
 ((NUMBR)|(NUMBAR)|(YARN)|(TROOF)) {printf("TYPE LITERAL"); return TYPE_LITERAL;}
-(-?[0-9]+) {printf("NUMBR LITERAL"); return NUMBR;}
-(-?[0-9]+\.[0-9]+) {printf("NUMBAR LITERAL"); return NUMBAR;}
-(\".*\") {printf("YARN LITERAL"); return YARN_LITERAL;}
+(-?[0-9]+) {printf("NUMBR LITERAL"); 
+			yylval.number = atoi(yytext);
+			return NUMBR;}
+(-?[0-9]+\.[0-9]+) {printf("NUMBAR LITERAL"); 
+					yylval.floatnum = atof(yytext);		
+					return NUMBAR;}
+(\".*\") {printf("YARN LITERAL"); 
+		yylval.string = yytext;
+		return YARN_LITERAL;}
 (HAI) {printf("keyword: HAI\n"); return HAI;}
 (KTHXBYE) {printf("keyword: KTHXBYE\n"); return KTHXBYE;}
 ([a-zA-Z]{1}[a-zA-Z]+) {

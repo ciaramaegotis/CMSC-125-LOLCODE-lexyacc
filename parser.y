@@ -2,15 +2,21 @@
 #include <stdio.h>
 extern FILE *yyin;
 int regs[26];
+float ITValue = 0;
 %}
 
 
-%token I TROOF_LITERAL OUTTA TYPE_LITERAL NUMBR NUMBAR YARN_LITERAL OF AN HAI KTHXBYE HAS A ITZ SUM DIFF QUOSHUNT PRODUKT MOD SMALLR BIGGR R SMOOSH VISIBLE BOTH EITHER NOT WON ANY ALL SAEM DIFFRINT MAEK IS NOW GIMMEH O RLY YA OMG OMGWTF MEBBE NO WAI OIC WILE TIL UPPIN NERFIN WTF IM IN YR RLY_Q WTF_Q
+%token I TROOF_LITERAL OUTTA TYPE_LITERAL OF AN HAI KTHXBYE HAS A ITZ SUM DIFF QUOSHUNT PRODUKT MOD SMALLR BIGGR R SMOOSH VISIBLE BOTH EITHER NOT WON ANY ALL SAEM DIFFRINT MAEK IS NOW GIMMEH O RLY YA OMG OMGWTF MEBBE NO WAI OIC WILE TIL UPPIN NERFIN WTF IM IN YR RLY_Q WTF_Q
 %union{
-  int integer;
+  int number;
   char * string;
+  float floatnum;
 }
 %token <string> IDENTIFIER
+%token <number> NUMBR
+%token <floatnum> NUMBAR
+%token <string> YARN_LITERAL
+
 %left '|'
 %left '&'
 %left '+' '-'
@@ -37,8 +43,13 @@ variable_declaration: I HAS A IDENTIFIER
                       I HAS A IDENTIFIER ITZ TROOF_LITERAL
 
 number_expression: SUM OF number_expression AN number_expression
+                    {
+                      
+                      printf("%f", ITValue);
+                    }
                    |
                    DIFF OF number_expression AN number_expression
+                   {return 3;}
                    |
                    PRODUKT OF number_expression AN number_expression
                    |
@@ -51,8 +62,10 @@ number_expression: SUM OF number_expression AN number_expression
                    SMALLR OF number_expression AN number_expression
                    |
                    NUMBR
+                   {ITValue = $1;}
                    |
                    NUMBAR
+                   {ITValue = $1;}
 
 troof_expression: TROOF_LITERAL
                   |
@@ -75,6 +88,9 @@ output: VISIBLE troof_expression
         VISIBLE IDENTIFIER;
         |
         VISIBLE YARN_LITERAL
+        {
+          printf("%s", $2);
+        }
         |
         VISIBLE concatenation
 

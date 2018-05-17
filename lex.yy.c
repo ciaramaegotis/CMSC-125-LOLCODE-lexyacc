@@ -1098,31 +1098,37 @@ YY_RULE_SETUP
 case 50:
 YY_RULE_SETUP
 #line 60 "lexer.l"
-{printf("NUMBR LITERAL"); return NUMBR;}
+{printf("NUMBR LITERAL"); 
+			yylval.number = atoi(yytext);
+			return NUMBR;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 61 "lexer.l"
-{printf("NUMBAR LITERAL"); return NUMBAR;}
+#line 63 "lexer.l"
+{printf("NUMBAR LITERAL"); 
+					yylval.floatnum = atof(yytext);		
+					return NUMBAR;}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 62 "lexer.l"
-{printf("YARN LITERAL"); return YARN_LITERAL;}
+#line 66 "lexer.l"
+{printf("YARN LITERAL"); 
+		yylval.string = yytext;
+		return YARN_LITERAL;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 63 "lexer.l"
+#line 69 "lexer.l"
 {printf("keyword: HAI\n"); return HAI;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 64 "lexer.l"
+#line 70 "lexer.l"
 {printf("keyword: KTHXBYE\n"); return KTHXBYE;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 65 "lexer.l"
+#line 71 "lexer.l"
 {
                           yylval.string = strdup(yytext);
                          return IDENTIFIER;
@@ -1130,10 +1136,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 69 "lexer.l"
+#line 75 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 1137 "lex.yy.c"
+#line 1143 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2134,7 +2140,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 69 "lexer.l"
+#line 75 "lexer.l"
 
 
 

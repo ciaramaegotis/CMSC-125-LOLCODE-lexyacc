@@ -49,58 +49,58 @@ extern int yydebug;
     TROOF_LITERAL = 259,
     OUTTA = 260,
     TYPE_LITERAL = 261,
-    NUMBR = 262,
-    NUMBAR = 263,
-    YARN_LITERAL = 264,
-    OF = 265,
-    AN = 266,
-    HAI = 267,
-    KTHXBYE = 268,
-    HAS = 269,
-    A = 270,
-    ITZ = 271,
-    SUM = 272,
-    DIFF = 273,
-    QUOSHUNT = 274,
-    PRODUKT = 275,
-    MOD = 276,
-    SMALLR = 277,
-    BIGGR = 278,
-    R = 279,
-    SMOOSH = 280,
-    VISIBLE = 281,
-    BOTH = 282,
-    EITHER = 283,
-    NOT = 284,
-    WON = 285,
-    ANY = 286,
-    ALL = 287,
-    SAEM = 288,
-    DIFFRINT = 289,
-    MAEK = 290,
-    IS = 291,
-    NOW = 292,
-    GIMMEH = 293,
-    O = 294,
-    RLY = 295,
-    YA = 296,
-    OMG = 297,
-    OMGWTF = 298,
-    MEBBE = 299,
-    NO = 300,
-    WAI = 301,
-    OIC = 302,
-    WILE = 303,
-    TIL = 304,
-    UPPIN = 305,
-    NERFIN = 306,
-    WTF = 307,
-    IM = 308,
-    IN = 309,
-    YR = 310,
-    RLY_Q = 311,
-    WTF_Q = 312,
-    IDENTIFIER = 313,
+    OF = 262,
+    AN = 263,
+    HAI = 264,
+    KTHXBYE = 265,
+    HAS = 266,
+    A = 267,
+    ITZ = 268,
+    SUM = 269,
+    DIFF = 270,
+    QUOSHUNT = 271,
+    PRODUKT = 272,
+    MOD = 273,
+    SMALLR = 274,
+    BIGGR = 275,
+    R = 276,
+    SMOOSH = 277,
+    VISIBLE = 278,
+    BOTH = 279,
+    EITHER = 280,
+    NOT = 281,
+    WON = 282,
+    ANY = 283,
+    ALL = 284,
+    SAEM = 285,
+    DIFFRINT = 286,
+    MAEK = 287,
+    IS = 288,
+    NOW = 289,
+    GIMMEH = 290,
+    O = 291,
+    RLY = 292,
+    YA = 293,
+    OMG = 294,
+    OMGWTF = 295,
+    MEBBE = 296,
+    NO = 297,
+    WAI = 298,
+    OIC = 299,
+    WILE = 300,
+    TIL = 301,
+    UPPIN = 302,
+    NERFIN = 303,
+    WTF = 304,
+    IM = 305,
+    IN = 306,
+    YR = 307,
+    RLY_Q = 308,
+    WTF_Q = 309,
+    IDENTIFIER = 310,
+    NUMBR = 311,
+    NUMBAR = 312,
+    YARN_LITERAL = 313,
     UMINUS = 314
   };
 #endif
@@ -109,58 +109,58 @@ extern int yydebug;
 #define TROOF_LITERAL 259
 #define OUTTA 260
 #define TYPE_LITERAL 261
-#define NUMBR 262
-#define NUMBAR 263
-#define YARN_LITERAL 264
-#define OF 265
-#define AN 266
-#define HAI 267
-#define KTHXBYE 268
-#define HAS 269
-#define A 270
-#define ITZ 271
-#define SUM 272
-#define DIFF 273
-#define QUOSHUNT 274
-#define PRODUKT 275
-#define MOD 276
-#define SMALLR 277
-#define BIGGR 278
-#define R 279
-#define SMOOSH 280
-#define VISIBLE 281
-#define BOTH 282
-#define EITHER 283
-#define NOT 284
-#define WON 285
-#define ANY 286
-#define ALL 287
-#define SAEM 288
-#define DIFFRINT 289
-#define MAEK 290
-#define IS 291
-#define NOW 292
-#define GIMMEH 293
-#define O 294
-#define RLY 295
-#define YA 296
-#define OMG 297
-#define OMGWTF 298
-#define MEBBE 299
-#define NO 300
-#define WAI 301
-#define OIC 302
-#define WILE 303
-#define TIL 304
-#define UPPIN 305
-#define NERFIN 306
-#define WTF 307
-#define IM 308
-#define IN 309
-#define YR 310
-#define RLY_Q 311
-#define WTF_Q 312
-#define IDENTIFIER 313
+#define OF 262
+#define AN 263
+#define HAI 264
+#define KTHXBYE 265
+#define HAS 266
+#define A 267
+#define ITZ 268
+#define SUM 269
+#define DIFF 270
+#define QUOSHUNT 271
+#define PRODUKT 272
+#define MOD 273
+#define SMALLR 274
+#define BIGGR 275
+#define R 276
+#define SMOOSH 277
+#define VISIBLE 278
+#define BOTH 279
+#define EITHER 280
+#define NOT 281
+#define WON 282
+#define ANY 283
+#define ALL 284
+#define SAEM 285
+#define DIFFRINT 286
+#define MAEK 287
+#define IS 288
+#define NOW 289
+#define GIMMEH 290
+#define O 291
+#define RLY 292
+#define YA 293
+#define OMG 294
+#define OMGWTF 295
+#define MEBBE 296
+#define NO 297
+#define WAI 298
+#define OIC 299
+#define WILE 300
+#define TIL 301
+#define UPPIN 302
+#define NERFIN 303
+#define WTF 304
+#define IM 305
+#define IN 306
+#define YR 307
+#define RLY_Q 308
+#define WTF_Q 309
+#define IDENTIFIER 310
+#define NUMBR 311
+#define NUMBAR 312
+#define YARN_LITERAL 313
 #define UMINUS 314
 
 /* Value type.  */
@@ -168,12 +168,13 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 9 "parser.y" /* yacc.c:1909  */
+#line 10 "parser.y" /* yacc.c:1909  */
 
-  int integer;
+  int number;
   char * string;
+  float floatnum;
 
-#line 177 "y.tab.h" /* yacc.c:1909  */
+#line 178 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
