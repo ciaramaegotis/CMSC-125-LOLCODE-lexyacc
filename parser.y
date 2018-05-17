@@ -53,6 +53,22 @@ variable_declaration: I HAS A IDENTIFIER
                       }
                       |
                       I HAS A IDENTIFIER ITZ YARN_LITERAL
+                      {
+                        SYM *new_var = (SYM *) malloc(sizeof(SYM));
+                        new_var->type = 2;
+                        new_var->yarnValue = $6;
+                        new_var->variable_name = $4;
+                        new_var->next = NULL;
+
+                        if (isFirstVariable == 1){
+                          var_linkedlist = new_var;
+                          isFirstVariable = 0;
+                        }else{
+                          insertAtHead(new_var);
+                        }
+                      }
+                      |
+                      I HAS A IDENTIFIER ITZ concatenation
                       |
                       I HAS A IDENTIFIER ITZ number_expression{
                           SYM *new_var = (SYM *) malloc(sizeof(SYM));
@@ -201,6 +217,7 @@ number_expression: SUM OF number_expression AN number_expression
 
 troof_expression: TROOF_LITERAL
                   {
+
                     troof_IT[currentIndexofTroof] = $1;
                     ++currentIndexofTroof;
                   }
@@ -299,6 +316,11 @@ variable_assignment:  IDENTIFIER R number_expression
                       |
                       IDENTIFIER R concatenation
 
+input: GIMMEH IDENTIFIER
+        {
+
+        }
+
 
 end_case: number_expression
           |
@@ -313,6 +335,8 @@ end_case: number_expression
           output
           |
           concatenation
+          |
+          input
 
 program_body: end_case
               |

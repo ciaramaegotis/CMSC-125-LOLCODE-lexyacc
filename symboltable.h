@@ -69,11 +69,11 @@ int setYarnVar(char *varname, int type, char *value){
 	}
 }
 
-int setTroofVar(char *varname, int type, char *value){
+int setTroofVar(char *varname, int type, int value){
 	SYM *travel = var_linkedlist;
 	while (travel != NULL){
 		if (strcmp(varname, travel->variable_name) == 0 && (type == travel->type || travel->type == 0)){
-			travel->troofValue = value;
+			travel->troofValue = (value == 1)? "WIN": "FAIL";
 			travel->type = type;
 			break;
 		}
@@ -98,6 +98,7 @@ void printVariable(char *varname){
 	int isFound = 0;
 	SYM *travel = var_linkedlist;
 	while (travel != NULL){
+		printf("%s vs %s\n\n\n", varname, travel->variable_name);
 		if (strcmp(varname, travel->variable_name) == 0){
 			if (travel->type == 0){
 				printf("Syntax error. Variable not initialized");
