@@ -98,7 +98,6 @@ void printVariable(char *varname){
 	int isFound = 0;
 	SYM *travel = var_linkedlist;
 	while (travel != NULL){
-		printf("%s vs %s\n\n\n", varname, travel->variable_name);
 		if (strcmp(varname, travel->variable_name) == 0){
 			if (travel->type == 0){
 				printf("Syntax error. Variable not initialized");
@@ -128,12 +127,51 @@ void inputVariable(char *varname){
 	int type = checkIfValidVariableWithoutType(varname);
 	if (type != -1){
 		if (type == 0 || type == 2 || type == 3){
-			char *inputString;
-			inputString = malloc(256);
-		    scanf("%255s", inputString);
+			char inputString[100];
+		    gets(inputString);
+		    if (strcmp(inputString, "WIN") == 0){
+		    	setTroofVar(varname, 3, 1);
+		    }else if (strcmp(inputString, "FAIL") == 0){
+		    	setTroofVar(varname, 3, 0);
+		    }else{
+		    	int charCounter = 0;
+		    	int isString = 0;
+		    	while (inputString[charCounter] != '\0'){
+		    		int numCounterPart = inputString[charCounter] - '0';
+		    		if (numCounterPart >= 0 && numCounterPart <= 9){
+		    			charCounter++;
+		    			continue;
+		    		}else if (inputString[charCounter] == '.'){
+		    			charCounter++;
+		    			while (inputString[charCounter] != '\0'){
+		    				int numCounterPart2 = inputString[charCounter] - '0';
+		    				if (numCounterPart2 >= 0 && numCounterPart2 <= 9){
+		    					charCounter++;
+		    					continue;
+		    				}else{
+		    					isString = 1;
+		    					break;
+		    				}
+		    				charCounter++;
+		    			}
+		    		}else{
+		    			isString = 1;
+		    			break;
+		    		}
+		    		charCounter++;
+		    	}
+		    	if (isString == 1){
+		    		char *stringPointer = inputString;
+		    		setYarnVar(varname, 2, stringPointer);
+		    	}else{
+		    		float floatVar = atof(inputString);
+		    		setNumbrVar(varname, 1, floatVar);
+		    	}
+		    }
 		}else if (type == 1){
 			float inputFloat;
 			scanf("%f", &inputFloat);
+			setNumbrVar(varname, 1, inputFloat);
 		}
 	}else{
 		printf("Syntax error. Variable not existing");
