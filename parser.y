@@ -5,7 +5,12 @@ int regs[26];
 %}
 
 
-%token I TROOF_LITERAL OUTTA TYPE_LITERAL NUMBR NUMBAR YARN_LITERAL IDENTIFIER OF AN HAI KTHXBYE HAS A ITZ SUM DIFF QUOSHUNT PRODUKT MOD SMALLR BIGGR R SMOOSH VISIBLE BOTH EITHER NOT WON ANY ALL SAEM DIFFRINT MAEK IS NOW GIMMEH O RLY YA OMG OMGWTF MEBBE NO WAI OIC WILE TIL UPPIN NERFIN WTF IM IN YR RLY_Q WTF_Q
+%token I TROOF_LITERAL OUTTA TYPE_LITERAL NUMBR NUMBAR YARN_LITERAL OF AN HAI KTHXBYE HAS A ITZ SUM DIFF QUOSHUNT PRODUKT MOD SMALLR BIGGR R SMOOSH VISIBLE BOTH EITHER NOT WON ANY ALL SAEM DIFFRINT MAEK IS NOW GIMMEH O RLY YA OMG OMGWTF MEBBE NO WAI OIC WILE TIL UPPIN NERFIN WTF IM IN YR RLY_Q WTF_Q
+%union{
+  int integer;
+  char * string;
+}
+%token <string> IDENTIFIER
 %left '|'
 %left '&'
 %left '+' '-'
@@ -19,13 +24,16 @@ program: HAI program_body KTHXBYE
          };
 
 variable_declaration: I HAS A IDENTIFIER
+                      {
+                        printf("%s", $4);
+                      }
                       |
                       I HAS A IDENTIFIER ITZ YARN_LITERAL
                       |
                       I HAS A IDENTIFIER ITZ NUMBR
                       |
                       I HAS A IDENTIFIER ITZ NUMBAR
-                      | 
+                      |
                       I HAS A IDENTIFIER ITZ TROOF_LITERAL
 
 number_expression: SUM OF number_expression AN number_expression
@@ -70,7 +78,7 @@ output: VISIBLE troof_expression
         |
         VISIBLE concatenation
 
-concatenation: 
+concatenation:
 
 variable_assignment:  IDENTIFIER R number_expression
                       |

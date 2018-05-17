@@ -52,55 +52,55 @@ extern int yydebug;
     NUMBR = 262,
     NUMBAR = 263,
     YARN_LITERAL = 264,
-    IDENTIFIER = 265,
-    OF = 266,
-    AN = 267,
-    HAI = 268,
-    KTHXBYE = 269,
-    HAS = 270,
-    A = 271,
-    ITZ = 272,
-    SUM = 273,
-    DIFF = 274,
-    QUOSHUNT = 275,
-    PRODUKT = 276,
-    MOD = 277,
-    SMALLR = 278,
-    BIGGR = 279,
-    R = 280,
-    SMOOSH = 281,
-    VISIBLE = 282,
-    BOTH = 283,
-    EITHER = 284,
-    NOT = 285,
-    WON = 286,
-    ANY = 287,
-    ALL = 288,
-    SAEM = 289,
-    DIFFRINT = 290,
-    MAEK = 291,
-    IS = 292,
-    NOW = 293,
-    GIMMEH = 294,
-    O = 295,
-    RLY = 296,
-    YA = 297,
-    OMG = 298,
-    OMGWTF = 299,
-    MEBBE = 300,
-    NO = 301,
-    WAI = 302,
-    OIC = 303,
-    WILE = 304,
-    TIL = 305,
-    UPPIN = 306,
-    NERFIN = 307,
-    WTF = 308,
-    IM = 309,
-    IN = 310,
-    YR = 311,
-    RLY_Q = 312,
-    WTF_Q = 313,
+    OF = 265,
+    AN = 266,
+    HAI = 267,
+    KTHXBYE = 268,
+    HAS = 269,
+    A = 270,
+    ITZ = 271,
+    SUM = 272,
+    DIFF = 273,
+    QUOSHUNT = 274,
+    PRODUKT = 275,
+    MOD = 276,
+    SMALLR = 277,
+    BIGGR = 278,
+    R = 279,
+    SMOOSH = 280,
+    VISIBLE = 281,
+    BOTH = 282,
+    EITHER = 283,
+    NOT = 284,
+    WON = 285,
+    ANY = 286,
+    ALL = 287,
+    SAEM = 288,
+    DIFFRINT = 289,
+    MAEK = 290,
+    IS = 291,
+    NOW = 292,
+    GIMMEH = 293,
+    O = 294,
+    RLY = 295,
+    YA = 296,
+    OMG = 297,
+    OMGWTF = 298,
+    MEBBE = 299,
+    NO = 300,
+    WAI = 301,
+    OIC = 302,
+    WILE = 303,
+    TIL = 304,
+    UPPIN = 305,
+    NERFIN = 306,
+    WTF = 307,
+    IM = 308,
+    IN = 309,
+    YR = 310,
+    RLY_Q = 311,
+    WTF_Q = 312,
+    IDENTIFIER = 313,
     UMINUS = 314
   };
 #endif
@@ -112,60 +112,71 @@ extern int yydebug;
 #define NUMBR 262
 #define NUMBAR 263
 #define YARN_LITERAL 264
-#define IDENTIFIER 265
-#define OF 266
-#define AN 267
-#define HAI 268
-#define KTHXBYE 269
-#define HAS 270
-#define A 271
-#define ITZ 272
-#define SUM 273
-#define DIFF 274
-#define QUOSHUNT 275
-#define PRODUKT 276
-#define MOD 277
-#define SMALLR 278
-#define BIGGR 279
-#define R 280
-#define SMOOSH 281
-#define VISIBLE 282
-#define BOTH 283
-#define EITHER 284
-#define NOT 285
-#define WON 286
-#define ANY 287
-#define ALL 288
-#define SAEM 289
-#define DIFFRINT 290
-#define MAEK 291
-#define IS 292
-#define NOW 293
-#define GIMMEH 294
-#define O 295
-#define RLY 296
-#define YA 297
-#define OMG 298
-#define OMGWTF 299
-#define MEBBE 300
-#define NO 301
-#define WAI 302
-#define OIC 303
-#define WILE 304
-#define TIL 305
-#define UPPIN 306
-#define NERFIN 307
-#define WTF 308
-#define IM 309
-#define IN 310
-#define YR 311
-#define RLY_Q 312
-#define WTF_Q 313
+#define OF 265
+#define AN 266
+#define HAI 267
+#define KTHXBYE 268
+#define HAS 269
+#define A 270
+#define ITZ 271
+#define SUM 272
+#define DIFF 273
+#define QUOSHUNT 274
+#define PRODUKT 275
+#define MOD 276
+#define SMALLR 277
+#define BIGGR 278
+#define R 279
+#define SMOOSH 280
+#define VISIBLE 281
+#define BOTH 282
+#define EITHER 283
+#define NOT 284
+#define WON 285
+#define ANY 286
+#define ALL 287
+#define SAEM 288
+#define DIFFRINT 289
+#define MAEK 290
+#define IS 291
+#define NOW 292
+#define GIMMEH 293
+#define O 294
+#define RLY 295
+#define YA 296
+#define OMG 297
+#define OMGWTF 298
+#define MEBBE 299
+#define NO 300
+#define WAI 301
+#define OIC 302
+#define WILE 303
+#define TIL 304
+#define UPPIN 305
+#define NERFIN 306
+#define WTF 307
+#define IM 308
+#define IN 309
+#define YR 310
+#define RLY_Q 311
+#define WTF_Q 312
+#define IDENTIFIER 313
 #define UMINUS 314
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+
+union YYSTYPE
+{
+#line 9 "parser.y" /* yacc.c:1909  */
+
+  int integer;
+  char * string;
+
+#line 177 "y.tab.h" /* yacc.c:1909  */
+};
+
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif

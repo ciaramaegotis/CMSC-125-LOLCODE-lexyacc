@@ -569,9 +569,9 @@ char *yytext;
 #line 2 "lexer.l"
 int yylineno;
 #include <stdio.h>
+#include <string.h>
 #include "y.tab.h"
 int c;
-extern int yylval;
 extern FILE *yyin;
 #line 577 "lex.yy.c"
 
@@ -1123,14 +1123,17 @@ YY_RULE_SETUP
 case 55:
 YY_RULE_SETUP
 #line 65 "lexer.l"
-{printf("IDENTIFIER"); return IDENTIFIER;}
+{
+                          yylval.string = strdup(yytext);
+                         return IDENTIFIER;
+                          }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 66 "lexer.l"
+#line 69 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 1134 "lex.yy.c"
+#line 1137 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2131,7 +2134,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 66 "lexer.l"
+#line 69 "lexer.l"
 
 
 

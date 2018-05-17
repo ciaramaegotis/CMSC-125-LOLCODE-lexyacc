@@ -1,9 +1,9 @@
 %{
 int yylineno;
 #include <stdio.h>
+#include <string.h>
 #include "y.tab.h"
 int c;
-extern int yylval;
 extern FILE *yyin;
 %}
 
@@ -62,5 +62,8 @@ extern FILE *yyin;
 (\".*\") {printf("YARN LITERAL"); return YARN_LITERAL;}
 (HAI) {printf("keyword: HAI\n"); return HAI;}
 (KTHXBYE) {printf("keyword: KTHXBYE\n"); return KTHXBYE;}
-([a-zA-Z]{1}[a-zA-Z]+) {printf("IDENTIFIER"); return IDENTIFIER;}
+([a-zA-Z]{1}[a-zA-Z]+) {
+                          yylval.string = strdup(yytext);
+                         return IDENTIFIER;
+                          }
 %%
