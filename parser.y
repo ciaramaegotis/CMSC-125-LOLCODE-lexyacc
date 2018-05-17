@@ -48,18 +48,41 @@ variable_declaration: I HAS A IDENTIFIER
                           var_linkedlist = new_var;
                           isFirstVariable = 0;
                         }else{
-                          new_var->next = var_linkedlist;
-                          var_linkedlist = new_var;
+                          insertAtHead(new_var);
                         }
                       }
                       |
                       I HAS A IDENTIFIER ITZ YARN_LITERAL
                       |
-                      I HAS A IDENTIFIER ITZ NUMBR
+                      I HAS A IDENTIFIER ITZ number_expression{
+                          SYM *new_var = (SYM *) malloc(sizeof(SYM));
+                          new_var->type = 1;
+                          new_var->floatValue = ITValue[currentIndexofIT-1];
+                          new_var->variable_name = $4;
+                          new_var->next = NULL;
+
+                          if (isFirstVariable == 1){
+                            var_linkedlist = new_var;
+                            isFirstVariable = 0;
+                          }else{
+                            insertAtHead(new_var);
+                          }
+                      }
                       |
-                      I HAS A IDENTIFIER ITZ NUMBAR
-                      |
-                      I HAS A IDENTIFIER ITZ TROOF_LITERAL
+                      I HAS A IDENTIFIER ITZ troof_expression{
+                          SYM *new_var = (SYM *) malloc(sizeof(SYM));
+                          new_var->type = 3;
+                          new_var->floatValue = troof_IT[currentIndexofTroof-1];
+                          new_var->variable_name = $4;
+                          new_var->next = NULL;
+
+                          if (isFirstVariable == 1){
+                            var_linkedlist = new_var;
+                            isFirstVariable = 0;
+                          }else{
+                            insertAtHead(new_var);
+                          }
+                      }
                       |
                       I HAS A IDENTIFIER ITZ A TYPE_LITERAL
                       {
@@ -73,10 +96,9 @@ variable_declaration: I HAS A IDENTIFIER
                             var_linkedlist = new_var;
                             isFirstVariable = 0;
                           }else{
-                            new_var->next = var_linkedlist;
-                            var_linkedlist = new_var;
+                            insertAtHead(new_var);
                           }
-                          insertAtHead();
+                          
                         }else if(strcmp($7, "NUMBR") == 0 || strcmp($7, "NUMBAR") == 0){
                           SYM *new_var = (SYM *) malloc(sizeof(SYM));
                           new_var->type = 1;
@@ -87,8 +109,7 @@ variable_declaration: I HAS A IDENTIFIER
                             var_linkedlist = new_var;
                             isFirstVariable = 0;
                           }else{
-                            new_var->next = var_linkedlist;
-                            var_linkedlist = new_var;
+                            insertAtHead(new_var);
                           }
                         }else if(strcmp($7, "TROOF") == 0){
                           SYM *new_var = (SYM *) malloc(sizeof(SYM));
@@ -100,8 +121,7 @@ variable_declaration: I HAS A IDENTIFIER
                             var_linkedlist = new_var;
                             isFirstVariable = 0;
                           }else{
-                            new_var->next = var_linkedlist;
-                            var_linkedlist = new_var;
+                            insertAtHead(new_var);
                           }
                         }else if(strcmp($7, "NOOB") == 0){
                           SYM *new_var = (SYM *) malloc(sizeof(SYM));
@@ -113,8 +133,7 @@ variable_declaration: I HAS A IDENTIFIER
                             var_linkedlist = new_var;
                             isFirstVariable = 0;
                           }else{
-                            new_var->next = var_linkedlist;
-                            var_linkedlist = new_var;
+                            insertAtHead(new_var);
                           }
                         }
                       }
@@ -231,7 +250,10 @@ output: VISIBLE troof_expression
           printf("\nPRINTING: %f\n", ITValue[currentIndexofIT-1]);
         }
         |
-        VISIBLE IDENTIFIER;
+        VISIBLE IDENTIFIER
+        {
+          printVariable($2);
+        }
         |
         VISIBLE YARN_LITERAL
         {
@@ -244,12 +266,36 @@ concatenation:
 
 variable_assignment:  IDENTIFIER R number_expression
                       {
-                        printf("\n%s is %f\n", $1, ITValue[currentIndexofIT-1]);
+                        int isValid = checkIfValidVariable($1, 1);
+                        if (isValid == 1){
+                          setNumbrVar($1, 1, ITValue[currentIndexofIT-1]);
+                        }else{
+                          printf("Syntax error. Error in initialization");
+                          exit(0);
+                        }
                       }
                       |
                       IDENTIFIER R troof_expression
+                      {
+                        int isValid = checkIfValidVariable($1, 3);
+                        if (isValid == 1){
+                          setTroofVar($1, 3, troof_IT[currentIndexofTroof-1]);
+                        }else{
+                          printf("Syntax error. Error in initialization");
+                          exit(0);
+                        }
+                      }
                       |
                       IDENTIFIER R YARN_LITERAL
+                      {
+                        int isValid = checkIfValidVariable($1, 2);
+                        if (isValid == 1){
+                          setYarnVar($1, 2, $3);
+                        }else{
+                          printf("Syntax error. Error in initialization");
+                          exit(0);
+                        }
+                      }
                       |
                       IDENTIFIER R concatenation
 
