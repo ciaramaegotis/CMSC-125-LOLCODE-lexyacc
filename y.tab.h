@@ -46,121 +46,121 @@ extern int yydebug;
   enum yytokentype
   {
     I = 258,
-    TROOF_LITERAL = 259,
-    OUTTA = 260,
-    TYPE_LITERAL = 261,
-    OF = 262,
-    AN = 263,
-    HAI = 264,
-    KTHXBYE = 265,
-    HAS = 266,
-    A = 267,
-    ITZ = 268,
-    SUM = 269,
-    DIFF = 270,
-    QUOSHUNT = 271,
-    PRODUKT = 272,
-    MOD = 273,
-    SMALLR = 274,
-    BIGGR = 275,
-    R = 276,
-    SMOOSH = 277,
-    VISIBLE = 278,
-    BOTH = 279,
-    EITHER = 280,
-    NOT = 281,
-    WON = 282,
-    ANY = 283,
-    ALL = 284,
-    SAEM = 285,
-    DIFFRINT = 286,
-    MAEK = 287,
-    IS = 288,
-    NOW = 289,
-    GIMMEH = 290,
-    O = 291,
-    RLY = 292,
-    YA = 293,
-    OMG = 294,
-    OMGWTF = 295,
-    MEBBE = 296,
-    NO = 297,
-    WAI = 298,
-    OIC = 299,
-    WILE = 300,
-    TIL = 301,
-    UPPIN = 302,
-    NERFIN = 303,
-    WTF = 304,
-    IM = 305,
-    IN = 306,
-    YR = 307,
-    RLY_Q = 308,
-    WTF_Q = 309,
-    IDENTIFIER = 310,
-    NUMBR = 311,
-    NUMBAR = 312,
-    YARN_LITERAL = 313,
+    OUTTA = 259,
+    TYPE_LITERAL = 260,
+    OF = 261,
+    AN = 262,
+    HAI = 263,
+    KTHXBYE = 264,
+    HAS = 265,
+    A = 266,
+    ITZ = 267,
+    SUM = 268,
+    DIFF = 269,
+    QUOSHUNT = 270,
+    PRODUKT = 271,
+    MOD = 272,
+    SMALLR = 273,
+    BIGGR = 274,
+    R = 275,
+    SMOOSH = 276,
+    VISIBLE = 277,
+    BOTH = 278,
+    EITHER = 279,
+    NOT = 280,
+    WON = 281,
+    ANY = 282,
+    ALL = 283,
+    SAEM = 284,
+    DIFFRINT = 285,
+    MAEK = 286,
+    IS = 287,
+    NOW = 288,
+    GIMMEH = 289,
+    O = 290,
+    RLY = 291,
+    YA = 292,
+    OMG = 293,
+    OMGWTF = 294,
+    MEBBE = 295,
+    NO = 296,
+    WAI = 297,
+    OIC = 298,
+    WILE = 299,
+    TIL = 300,
+    UPPIN = 301,
+    NERFIN = 302,
+    WTF = 303,
+    IM = 304,
+    IN = 305,
+    YR = 306,
+    RLY_Q = 307,
+    WTF_Q = 308,
+    IDENTIFIER = 309,
+    NUMBR = 310,
+    NUMBAR = 311,
+    YARN_LITERAL = 312,
+    TROOF_LITERAL = 313,
     UMINUS = 314
   };
 #endif
 /* Tokens.  */
 #define I 258
-#define TROOF_LITERAL 259
-#define OUTTA 260
-#define TYPE_LITERAL 261
-#define OF 262
-#define AN 263
-#define HAI 264
-#define KTHXBYE 265
-#define HAS 266
-#define A 267
-#define ITZ 268
-#define SUM 269
-#define DIFF 270
-#define QUOSHUNT 271
-#define PRODUKT 272
-#define MOD 273
-#define SMALLR 274
-#define BIGGR 275
-#define R 276
-#define SMOOSH 277
-#define VISIBLE 278
-#define BOTH 279
-#define EITHER 280
-#define NOT 281
-#define WON 282
-#define ANY 283
-#define ALL 284
-#define SAEM 285
-#define DIFFRINT 286
-#define MAEK 287
-#define IS 288
-#define NOW 289
-#define GIMMEH 290
-#define O 291
-#define RLY 292
-#define YA 293
-#define OMG 294
-#define OMGWTF 295
-#define MEBBE 296
-#define NO 297
-#define WAI 298
-#define OIC 299
-#define WILE 300
-#define TIL 301
-#define UPPIN 302
-#define NERFIN 303
-#define WTF 304
-#define IM 305
-#define IN 306
-#define YR 307
-#define RLY_Q 308
-#define WTF_Q 309
-#define IDENTIFIER 310
-#define NUMBR 311
-#define NUMBAR 312
-#define YARN_LITERAL 313
+#define OUTTA 259
+#define TYPE_LITERAL 260
+#define OF 261
+#define AN 262
+#define HAI 263
+#define KTHXBYE 264
+#define HAS 265
+#define A 266
+#define ITZ 267
+#define SUM 268
+#define DIFF 269
+#define QUOSHUNT 270
+#define PRODUKT 271
+#define MOD 272
+#define SMALLR 273
+#define BIGGR 274
+#define R 275
+#define SMOOSH 276
+#define VISIBLE 277
+#define BOTH 278
+#define EITHER 279
+#define NOT 280
+#define WON 281
+#define ANY 282
+#define ALL 283
+#define SAEM 284
+#define DIFFRINT 285
+#define MAEK 286
+#define IS 287
+#define NOW 288
+#define GIMMEH 289
+#define O 290
+#define RLY 291
+#define YA 292
+#define OMG 293
+#define OMGWTF 294
+#define MEBBE 295
+#define NO 296
+#define WAI 297
+#define OIC 298
+#define WILE 299
+#define TIL 300
+#define UPPIN 301
+#define NERFIN 302
+#define WTF 303
+#define IM 304
+#define IN 305
+#define YR 306
+#define RLY_Q 307
+#define WTF_Q 308
+#define IDENTIFIER 309
+#define NUMBR 310
+#define NUMBAR 311
+#define YARN_LITERAL 312
+#define TROOF_LITERAL 313
 #define UMINUS 314
 
 /* Value type.  */
@@ -168,10 +168,10 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 12 "parser.y" /* yacc.c:1909  */
+#line 13 "parser.y" /* yacc.c:1909  */
 
   int number;
-  char * string;
+  char *string;
   float floatnum;
 
 #line 178 "y.tab.h" /* yacc.c:1909  */

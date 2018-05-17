@@ -3,21 +3,23 @@
 extern FILE *yyin;
 int regs[26];
 float ITValue[100];
-int flagOperation = 0;
+int troof_IT[100];
+int currentIndexofTroof = 0;
 int currentIndexofIT = 0;
 %}
 
 
-%token I TROOF_LITERAL OUTTA TYPE_LITERAL OF AN HAI KTHXBYE HAS A ITZ SUM DIFF QUOSHUNT PRODUKT MOD SMALLR BIGGR R SMOOSH VISIBLE BOTH EITHER NOT WON ANY ALL SAEM DIFFRINT MAEK IS NOW GIMMEH O RLY YA OMG OMGWTF MEBBE NO WAI OIC WILE TIL UPPIN NERFIN WTF IM IN YR RLY_Q WTF_Q
+%token I OUTTA TYPE_LITERAL OF AN HAI KTHXBYE HAS A ITZ SUM DIFF QUOSHUNT PRODUKT MOD SMALLR BIGGR R SMOOSH VISIBLE BOTH EITHER NOT WON ANY ALL SAEM DIFFRINT MAEK IS NOW GIMMEH O RLY YA OMG OMGWTF MEBBE NO WAI OIC WILE TIL UPPIN NERFIN WTF IM IN YR RLY_Q WTF_Q
 %union{
   int number;
-  char * string;
+  char *string;
   float floatnum;
 }
 %token <string> IDENTIFIER
 %token <number> NUMBR
 %token <floatnum> NUMBAR
 %token <string> YARN_LITERAL
+%token <string> TROOF_LITERAL
 
 %left '|'
 %left '&'
@@ -106,22 +108,55 @@ number_expression: SUM OF number_expression AN number_expression
                    }
 
 troof_expression: TROOF_LITERAL
+                  {
+                    troof_IT[currentIndexofTroof] = $1;
+                    ++currentIndexofTroof;
+                  }
                   |
                   BOTH OF troof_expression AN troof_expression
+                  {
+                    if (troof_IT[currentIndexofTroof-2] == troof_IT[currentIndexofTroof-1]){
+                      troof_IT[currentIndexofTroof-2] = 1;
+                    }else{
+                      troof_IT[currentIndexofTroof-2] = 0;
+                    }
+                    currentIndexofTroof--;
+                  }
                   |
                   BOTH OF troof_expression troof_expression
                   |
                   EITHER OF troof_expression AN troof_expression
+                  {
+                    if (troof_IT[currentIndexofTroof-2] == 1 || troof_IT[currentIndexofTroof-1] == 1){
+                      troof_IT[currentIndexofTroof-2] = 1;
+                    }else{
+                      troof_IT[currentIndexofTroof-2] =  0;
+                    }
+                    currentIndexofTroof--;
+                  }
                   |
                   EITHER OF troof_expression troof_expression
                   |
                   NOT troof_expression
+                  {
+                    if (troof_IT[currentIndexofTroof-1] == 1){
+                     troof_IT[currentIndexofTroof-1] = 0;
+                    }else{
+                      troof_IT[currentIndexofTroof-1] = 1;
+                    }
+                  }
 
 conditional:
 
 output: VISIBLE troof_expression
+        {
+          printf("\nPRINTING: %s\n", (troof_IT[currentIndexofTroof-1] == 1)? "WIN": "FAIL");
+        }
         |
         VISIBLE number_expression
+        {
+          printf("\nPRINTING: %f\n", ITValue[currentIndexofIT-1]);
+        }
         |
         VISIBLE IDENTIFIER;
         |

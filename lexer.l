@@ -55,7 +55,9 @@ extern FILE *yyin;
 (TIL)  {printf("keyword: TIL\n"); return TIL;}
 (WILE)  {printf("keyword: WILE\n"); return WILE;}
 (OUTTA) {printf("keyword: OUTTA\n"); return OUTTA;}
-(WIN|FAIL) {printf("TROOF LITERAL"); return TROOF_LITERAL;}
+("WIN"|"FAIL") {printf("TROOF LITERAL"); 
+			yylval.number = atoi(yytext);
+			return TROOF_LITERAL;}
 ((NUMBR)|(NUMBAR)|(YARN)|(TROOF)) {printf("TYPE LITERAL"); return TYPE_LITERAL;}
 (-?[0-9]+) {printf("NUMBR LITERAL"); 
 			yylval.number = atoi(yytext);
