@@ -47,120 +47,120 @@ extern int yydebug;
   {
     I = 258,
     OUTTA = 259,
-    TYPE_LITERAL = 260,
-    OF = 261,
-    AN = 262,
-    HAI = 263,
-    KTHXBYE = 264,
-    HAS = 265,
-    A = 266,
-    ITZ = 267,
-    SUM = 268,
-    DIFF = 269,
-    QUOSHUNT = 270,
-    PRODUKT = 271,
-    MOD = 272,
-    SMALLR = 273,
-    BIGGR = 274,
-    R = 275,
-    SMOOSH = 276,
-    VISIBLE = 277,
-    BOTH = 278,
-    EITHER = 279,
-    NOT = 280,
-    WON = 281,
-    ANY = 282,
-    ALL = 283,
-    SAEM = 284,
-    DIFFRINT = 285,
-    MAEK = 286,
-    IS = 287,
-    NOW = 288,
-    GIMMEH = 289,
-    O = 290,
-    RLY = 291,
-    YA = 292,
-    OMG = 293,
-    OMGWTF = 294,
-    MEBBE = 295,
-    NO = 296,
-    WAI = 297,
-    OIC = 298,
-    WILE = 299,
-    TIL = 300,
-    UPPIN = 301,
-    NERFIN = 302,
-    WTF = 303,
-    IM = 304,
-    IN = 305,
-    YR = 306,
-    RLY_Q = 307,
-    WTF_Q = 308,
-    IDENTIFIER = 309,
-    NUMBR = 310,
-    NUMBAR = 311,
-    YARN_LITERAL = 312,
-    TROOF_LITERAL = 313,
+    OF = 260,
+    AN = 261,
+    HAI = 262,
+    KTHXBYE = 263,
+    HAS = 264,
+    A = 265,
+    ITZ = 266,
+    SUM = 267,
+    DIFF = 268,
+    QUOSHUNT = 269,
+    PRODUKT = 270,
+    MOD = 271,
+    SMALLR = 272,
+    BIGGR = 273,
+    R = 274,
+    SMOOSH = 275,
+    VISIBLE = 276,
+    BOTH = 277,
+    EITHER = 278,
+    NOT = 279,
+    WON = 280,
+    ANY = 281,
+    ALL = 282,
+    SAEM = 283,
+    DIFFRINT = 284,
+    MAEK = 285,
+    IS = 286,
+    NOW = 287,
+    GIMMEH = 288,
+    O = 289,
+    RLY = 290,
+    YA = 291,
+    OMG = 292,
+    OMGWTF = 293,
+    MEBBE = 294,
+    NO = 295,
+    WAI = 296,
+    OIC = 297,
+    WILE = 298,
+    TIL = 299,
+    UPPIN = 300,
+    NERFIN = 301,
+    WTF = 302,
+    IM = 303,
+    IN = 304,
+    YR = 305,
+    RLY_Q = 306,
+    WTF_Q = 307,
+    IDENTIFIER = 308,
+    NUMBR = 309,
+    NUMBAR = 310,
+    YARN_LITERAL = 311,
+    TROOF_LITERAL = 312,
+    TYPE_LITERAL = 313,
     UMINUS = 314
   };
 #endif
 /* Tokens.  */
 #define I 258
 #define OUTTA 259
-#define TYPE_LITERAL 260
-#define OF 261
-#define AN 262
-#define HAI 263
-#define KTHXBYE 264
-#define HAS 265
-#define A 266
-#define ITZ 267
-#define SUM 268
-#define DIFF 269
-#define QUOSHUNT 270
-#define PRODUKT 271
-#define MOD 272
-#define SMALLR 273
-#define BIGGR 274
-#define R 275
-#define SMOOSH 276
-#define VISIBLE 277
-#define BOTH 278
-#define EITHER 279
-#define NOT 280
-#define WON 281
-#define ANY 282
-#define ALL 283
-#define SAEM 284
-#define DIFFRINT 285
-#define MAEK 286
-#define IS 287
-#define NOW 288
-#define GIMMEH 289
-#define O 290
-#define RLY 291
-#define YA 292
-#define OMG 293
-#define OMGWTF 294
-#define MEBBE 295
-#define NO 296
-#define WAI 297
-#define OIC 298
-#define WILE 299
-#define TIL 300
-#define UPPIN 301
-#define NERFIN 302
-#define WTF 303
-#define IM 304
-#define IN 305
-#define YR 306
-#define RLY_Q 307
-#define WTF_Q 308
-#define IDENTIFIER 309
-#define NUMBR 310
-#define NUMBAR 311
-#define YARN_LITERAL 312
-#define TROOF_LITERAL 313
+#define OF 260
+#define AN 261
+#define HAI 262
+#define KTHXBYE 263
+#define HAS 264
+#define A 265
+#define ITZ 266
+#define SUM 267
+#define DIFF 268
+#define QUOSHUNT 269
+#define PRODUKT 270
+#define MOD 271
+#define SMALLR 272
+#define BIGGR 273
+#define R 274
+#define SMOOSH 275
+#define VISIBLE 276
+#define BOTH 277
+#define EITHER 278
+#define NOT 279
+#define WON 280
+#define ANY 281
+#define ALL 282
+#define SAEM 283
+#define DIFFRINT 284
+#define MAEK 285
+#define IS 286
+#define NOW 287
+#define GIMMEH 288
+#define O 289
+#define RLY 290
+#define YA 291
+#define OMG 292
+#define OMGWTF 293
+#define MEBBE 294
+#define NO 295
+#define WAI 296
+#define OIC 297
+#define WILE 298
+#define TIL 299
+#define UPPIN 300
+#define NERFIN 301
+#define WTF 302
+#define IM 303
+#define IN 304
+#define YR 305
+#define RLY_Q 306
+#define WTF_Q 307
+#define IDENTIFIER 308
+#define NUMBR 309
+#define NUMBAR 310
+#define YARN_LITERAL 311
+#define TROOF_LITERAL 312
+#define TYPE_LITERAL 313
 #define UMINUS 314
 
 /* Value type.  */
@@ -168,7 +168,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 13 "parser.y" /* yacc.c:1909  */
+#line 16 "parser.y" /* yacc.c:1909  */
 
   int number;
   char *string;

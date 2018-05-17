@@ -56,9 +56,15 @@ extern FILE *yyin;
 (WILE)  {printf("keyword: WILE\n"); return WILE;}
 (OUTTA) {printf("keyword: OUTTA\n"); return OUTTA;}
 ("WIN"|"FAIL") {printf("TROOF LITERAL"); 
-			yylval.number = atoi(yytext);
+			if (strcmp(yytext, "WIN") == 0){
+				yylval.number = 1;
+			}else{
+				yylval.number = 0;
+			}
 			return TROOF_LITERAL;}
-((NUMBR)|(NUMBAR)|(YARN)|(TROOF)) {printf("TYPE LITERAL"); return TYPE_LITERAL;}
+((NUMBR)|(NUMBAR)|(YARN)|(TROOF)) {printf("TYPE LITERAL"); 
+									yylval.string = strdup(yytext);
+									return TYPE_LITERAL;}
 (-?[0-9]+) {printf("NUMBR LITERAL"); 
 			yylval.number = atoi(yytext);
 			return NUMBR;}

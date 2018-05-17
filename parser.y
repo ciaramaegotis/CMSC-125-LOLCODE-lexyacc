@@ -1,15 +1,18 @@
 %{
 #include <stdio.h>
+#include <stdlib.h>
+#include "symboltable.h"
 extern FILE *yyin;
 int regs[26];
 float ITValue[100];
 int troof_IT[100];
 int currentIndexofTroof = 0;
 int currentIndexofIT = 0;
+int isFirstVariable = 1;
 %}
 
 
-%token I OUTTA TYPE_LITERAL OF AN HAI KTHXBYE HAS A ITZ SUM DIFF QUOSHUNT PRODUKT MOD SMALLR BIGGR R SMOOSH VISIBLE BOTH EITHER NOT WON ANY ALL SAEM DIFFRINT MAEK IS NOW GIMMEH O RLY YA OMG OMGWTF MEBBE NO WAI OIC WILE TIL UPPIN NERFIN WTF IM IN YR RLY_Q WTF_Q
+%token I OUTTA OF AN HAI KTHXBYE HAS A ITZ SUM DIFF QUOSHUNT PRODUKT MOD SMALLR BIGGR R SMOOSH VISIBLE BOTH EITHER NOT WON ANY ALL SAEM DIFFRINT MAEK IS NOW GIMMEH O RLY YA OMG OMGWTF MEBBE NO WAI OIC WILE TIL UPPIN NERFIN WTF IM IN YR RLY_Q WTF_Q
 %union{
   int number;
   char *string;
@@ -20,6 +23,7 @@ int currentIndexofIT = 0;
 %token <floatnum> NUMBAR
 %token <string> YARN_LITERAL
 %token <string> TROOF_LITERAL
+%token <string> TYPE_LITERAL
 
 %left '|'
 %left '&'
@@ -35,7 +39,18 @@ program: HAI program_body KTHXBYE
 
 variable_declaration: I HAS A IDENTIFIER
                       {
-                        printf("%s", $4);
+                        SYM *new_var = (SYM *) malloc(sizeof(SYM));
+                        new_var->type = 0;
+                        new_var->variable_name = $4;
+                        new_var->next = NULL;
+
+                        if (isFirstVariable == 1){
+                          var_linkedlist = new_var;
+                          isFirstVariable = 0;
+                        }else{
+                          new_var->next = var_linkedlist;
+                          var_linkedlist = new_var;
+                        }
                       }
                       |
                       I HAS A IDENTIFIER ITZ YARN_LITERAL
@@ -45,6 +60,64 @@ variable_declaration: I HAS A IDENTIFIER
                       I HAS A IDENTIFIER ITZ NUMBAR
                       |
                       I HAS A IDENTIFIER ITZ TROOF_LITERAL
+                      |
+                      I HAS A IDENTIFIER ITZ A TYPE_LITERAL
+                      {
+                        if (strcmp($7, "YARN") == 0){
+                          SYM *new_var = (SYM *) malloc(sizeof(SYM));
+                          new_var->type = 2;
+                          new_var->variable_name = $4;
+                          new_var->next = NULL;
+
+                          if (isFirstVariable == 1){
+                            var_linkedlist = new_var;
+                            isFirstVariable = 0;
+                          }else{
+                            new_var->next = var_linkedlist;
+                            var_linkedlist = new_var;
+                          }
+                          insertAtHead();
+                        }else if(strcmp($7, "NUMBR") == 0 || strcmp($7, "NUMBAR") == 0){
+                          SYM *new_var = (SYM *) malloc(sizeof(SYM));
+                          new_var->type = 1;
+                          new_var->variable_name = $4;
+                          new_var->next = NULL;
+
+                          if (isFirstVariable == 1){
+                            var_linkedlist = new_var;
+                            isFirstVariable = 0;
+                          }else{
+                            new_var->next = var_linkedlist;
+                            var_linkedlist = new_var;
+                          }
+                        }else if(strcmp($7, "TROOF") == 0){
+                          SYM *new_var = (SYM *) malloc(sizeof(SYM));
+                          new_var->type = 3;
+                          new_var->variable_name = $4;
+                          new_var->next = NULL;
+
+                          if (isFirstVariable == 1){
+                            var_linkedlist = new_var;
+                            isFirstVariable = 0;
+                          }else{
+                            new_var->next = var_linkedlist;
+                            var_linkedlist = new_var;
+                          }
+                        }else if(strcmp($7, "NOOB") == 0){
+                          SYM *new_var = (SYM *) malloc(sizeof(SYM));
+                          new_var->type = 0;
+                          new_var->variable_name = $4;
+                          new_var->next = NULL;
+
+                          if (isFirstVariable == 1){
+                            var_linkedlist = new_var;
+                            isFirstVariable = 0;
+                          }else{
+                            new_var->next = var_linkedlist;
+                            var_linkedlist = new_var;
+                          }
+                        }
+                      }
 
 number_expression: SUM OF number_expression AN number_expression
                     {
@@ -201,6 +274,7 @@ program_body: end_case
 
 %%
 main(int argc, char *argv[]){
+ var_linkedlist = (SYM *)malloc(sizeof(SYM));
  yyin = fopen(argv[1], "r");
  return(yyparse());
 }
