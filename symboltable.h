@@ -58,10 +58,13 @@ int setNumbrVar(char *varname, int type, float value){
 }
 
 int setYarnVar(char *varname, int type, char *value){
+	printf("ITO YUN HEHEHE %s\n\n\n\n\n\n\n\n", value);
 	SYM *travel = var_linkedlist;
 	while (travel != NULL){
 		if (strcmp(varname, travel->variable_name) == 0 && (type == travel->type || travel->type == 0)){
+			printf("DAPAT NAGMATCH NA SILA PLS \n\n\n\n\n\n");
 			travel->yarnValue = value;
+			printf("NAKUHA MO BA??? %s", travel->yarnValue);
 			travel->type = type;
 			break;
 		}
@@ -107,7 +110,10 @@ void printVariable(char *varname){
 				if (travel->type == 1){
 					printf("PRINTING: %f\n", travel->floatValue);
 				}else if (travel->type == 2){
+					printf("NAIIYAK NA MEEEE\n\n\n\n");
 					printf("PRINTING: %s\n", travel->yarnValue);
+					printf("PRINTING: %s\n", travel->variable_name);
+					printf("PRINTING: %i\n", travel->type);
 				}else if (travel->type == 3){	
 					printf("PRINTING: %s\n", travel->troofValue);
 				}
@@ -161,7 +167,7 @@ void inputVariable(char *varname){
 		    		charCounter++;
 		    	}
 		    	if (isString == 1){
-		    		char *stringPointer = inputString;
+		    		char *stringPointer = &inputString[0];
 		    		setYarnVar(varname, 2, stringPointer);
 		    	}else{
 		    		float floatVar = atof(inputString);
