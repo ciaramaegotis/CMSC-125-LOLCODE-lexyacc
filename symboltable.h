@@ -82,7 +82,7 @@ int setTroofVar(char *varname, int type, int value){
 }
 
 int checkIfValidVariableWithoutType(char *varname){
-	int isFound = 0;
+	int isFound = -1;
 	SYM *travel = var_linkedlist;
 	while (travel != NULL){
 		if (strcmp(varname, travel->variable_name) == 0){
@@ -120,6 +120,23 @@ void printVariable(char *varname){
 	}
 	if (isFound == 0){
 		printf(" Syntax error. Variable not found\n");
+		exit(0);
+	}
+}
+
+void inputVariable(char *varname){
+	int type = checkIfValidVariableWithoutType(varname);
+	if (type != -1){
+		if (type == 0 || type == 2 || type == 3){
+			char *inputString;
+			inputString = malloc(256);
+		    scanf("%255s", inputString);
+		}else if (type == 1){
+			float inputFloat;
+			scanf("%f", &inputFloat);
+		}
+	}else{
+		printf("Syntax error. Variable not existing");
 		exit(0);
 	}
 }

@@ -66,6 +66,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "symboltable.h"
 extern FILE *yyin;
 int regs[26];
@@ -75,7 +76,7 @@ int currentIndexofTroof = 0;
 int currentIndexofIT = 0;
 int isFirstVariable = 1;
 
-#line 79 "y.tab.c" /* yacc.c:339  */
+#line 80 "y.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -233,13 +234,13 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 16 "parser.y" /* yacc.c:355  */
+#line 17 "parser.y" /* yacc.c:355  */
 
   int number;
   char *string;
   float floatnum;
 
-#line 243 "y.tab.c" /* yacc.c:355  */
+#line 244 "y.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -256,7 +257,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 260 "y.tab.c" /* yacc.c:358  */
+#line 261 "y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -559,11 +560,11 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    35,    35,    40,    55,    71,    73,    88,   103,   157,
-     164,   171,   178,   185,   192,   199,   206,   212,   218,   225,
-     235,   237,   247,   249,   258,   260,   265,   270,   275,   280,
-     282,   284,   295,   306,   317,   319,   325,   327,   329,   331,
-     333,   335,   337,   339,   341,   343
+       0,    36,    36,    41,    56,    72,    74,    89,   104,   158,
+     165,   172,   179,   186,   193,   200,   207,   213,   219,   226,
+     236,   238,   248,   250,   259,   261,   266,   271,   276,   281,
+     283,   285,   296,   307,   318,   320,   326,   328,   330,   332,
+     334,   336,   338,   340,   342,   344
 };
 #endif
 
@@ -1424,15 +1425,15 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 36 "parser.y" /* yacc.c:1646  */
+#line 37 "parser.y" /* yacc.c:1646  */
     {
           printf("Note: valid program");
          }
-#line 1432 "y.tab.c" /* yacc.c:1646  */
+#line 1433 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 41 "parser.y" /* yacc.c:1646  */
+#line 42 "parser.y" /* yacc.c:1646  */
     {
                         SYM *new_var = (SYM *) malloc(sizeof(SYM));
                         new_var->type = 0;
@@ -1446,11 +1447,11 @@ yyreduce:
                           insertAtHead(new_var);
                         }
                       }
-#line 1450 "y.tab.c" /* yacc.c:1646  */
+#line 1451 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 56 "parser.y" /* yacc.c:1646  */
+#line 57 "parser.y" /* yacc.c:1646  */
     {
                         SYM *new_var = (SYM *) malloc(sizeof(SYM));
                         new_var->type = 2;
@@ -1465,11 +1466,11 @@ yyreduce:
                           insertAtHead(new_var);
                         }
                       }
-#line 1469 "y.tab.c" /* yacc.c:1646  */
+#line 1470 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 73 "parser.y" /* yacc.c:1646  */
+#line 74 "parser.y" /* yacc.c:1646  */
     {
                           SYM *new_var = (SYM *) malloc(sizeof(SYM));
                           new_var->type = 1;
@@ -1484,11 +1485,11 @@ yyreduce:
                             insertAtHead(new_var);
                           }
                       }
-#line 1488 "y.tab.c" /* yacc.c:1646  */
+#line 1489 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 88 "parser.y" /* yacc.c:1646  */
+#line 89 "parser.y" /* yacc.c:1646  */
     {
                           SYM *new_var = (SYM *) malloc(sizeof(SYM));
                           new_var->type = 3;
@@ -1503,11 +1504,11 @@ yyreduce:
                             insertAtHead(new_var);
                           }
                       }
-#line 1507 "y.tab.c" /* yacc.c:1646  */
+#line 1508 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 104 "parser.y" /* yacc.c:1646  */
+#line 105 "parser.y" /* yacc.c:1646  */
     {
                         if (strcmp((yyvsp[0].string), "YARN") == 0){
                           SYM *new_var = (SYM *) malloc(sizeof(SYM));
@@ -1560,109 +1561,109 @@ yyreduce:
                           }
                         }
                       }
-#line 1564 "y.tab.c" /* yacc.c:1646  */
+#line 1565 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 158 "parser.y" /* yacc.c:1646  */
+#line 159 "parser.y" /* yacc.c:1646  */
     {
                       printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] + ITValue[currentIndexofIT-1]);
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] + ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                     }
-#line 1574 "y.tab.c" /* yacc.c:1646  */
+#line 1575 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 165 "parser.y" /* yacc.c:1646  */
+#line 166 "parser.y" /* yacc.c:1646  */
     {
                       printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] - ITValue[currentIndexofIT-1]);
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] - ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                    }
-#line 1584 "y.tab.c" /* yacc.c:1646  */
+#line 1585 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 172 "parser.y" /* yacc.c:1646  */
+#line 173 "parser.y" /* yacc.c:1646  */
     {
                       printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] * ITValue[currentIndexofIT-1]);
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] * ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                    }
-#line 1594 "y.tab.c" /* yacc.c:1646  */
+#line 1595 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 179 "parser.y" /* yacc.c:1646  */
+#line 180 "parser.y" /* yacc.c:1646  */
     {
                       printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] / ITValue[currentIndexofIT-1]);
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] / ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                    }
-#line 1604 "y.tab.c" /* yacc.c:1646  */
+#line 1605 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 186 "parser.y" /* yacc.c:1646  */
+#line 187 "parser.y" /* yacc.c:1646  */
     {
                       printf("\nAnswer: %f\n", (int)ITValue[currentIndexofIT-2] % (int)ITValue[currentIndexofIT-1]);
                       ITValue[currentIndexofIT-2] = (int) ITValue[currentIndexofIT-2] % (int) ITValue[currentIndexofIT-1];
                       currentIndexofIT--;               
                    }
-#line 1614 "y.tab.c" /* yacc.c:1646  */
+#line 1615 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 193 "parser.y" /* yacc.c:1646  */
+#line 194 "parser.y" /* yacc.c:1646  */
     {
                       printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] > ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1]);
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] > ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1];
                       currentIndexofIT--;     
                    }
-#line 1624 "y.tab.c" /* yacc.c:1646  */
+#line 1625 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 200 "parser.y" /* yacc.c:1646  */
+#line 201 "parser.y" /* yacc.c:1646  */
     {
                       printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] < ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1]);
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] < ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1];
                       currentIndexofIT--; 
                    }
-#line 1634 "y.tab.c" /* yacc.c:1646  */
+#line 1635 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 207 "parser.y" /* yacc.c:1646  */
+#line 208 "parser.y" /* yacc.c:1646  */
     {
                     ITValue[currentIndexofIT] = (yyvsp[0].number);
                     ++currentIndexofIT;
                    }
-#line 1643 "y.tab.c" /* yacc.c:1646  */
+#line 1644 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 213 "parser.y" /* yacc.c:1646  */
+#line 214 "parser.y" /* yacc.c:1646  */
     {
                     ITValue[currentIndexofIT] = (yyvsp[0].floatnum);
                     ++currentIndexofIT;
                    }
-#line 1652 "y.tab.c" /* yacc.c:1646  */
+#line 1653 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 219 "parser.y" /* yacc.c:1646  */
+#line 220 "parser.y" /* yacc.c:1646  */
     {
 
                     troof_IT[currentIndexofTroof] = (yyvsp[0].string);
                     ++currentIndexofTroof;
                   }
-#line 1662 "y.tab.c" /* yacc.c:1646  */
+#line 1663 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 226 "parser.y" /* yacc.c:1646  */
+#line 227 "parser.y" /* yacc.c:1646  */
     {
                     if (troof_IT[currentIndexofTroof-2] == troof_IT[currentIndexofTroof-1]){
                       troof_IT[currentIndexofTroof-2] = 1;
@@ -1671,11 +1672,11 @@ yyreduce:
                     }
                     currentIndexofTroof--;
                   }
-#line 1675 "y.tab.c" /* yacc.c:1646  */
+#line 1676 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 238 "parser.y" /* yacc.c:1646  */
+#line 239 "parser.y" /* yacc.c:1646  */
     {
                     if (troof_IT[currentIndexofTroof-2] == 1 || troof_IT[currentIndexofTroof-1] == 1){
                       troof_IT[currentIndexofTroof-2] = 1;
@@ -1684,11 +1685,11 @@ yyreduce:
                     }
                     currentIndexofTroof--;
                   }
-#line 1688 "y.tab.c" /* yacc.c:1646  */
+#line 1689 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 250 "parser.y" /* yacc.c:1646  */
+#line 251 "parser.y" /* yacc.c:1646  */
     {
                     if (troof_IT[currentIndexofTroof-1] == 1){
                      troof_IT[currentIndexofTroof-1] = 0;
@@ -1696,43 +1697,43 @@ yyreduce:
                       troof_IT[currentIndexofTroof-1] = 1;
                     }
                   }
-#line 1700 "y.tab.c" /* yacc.c:1646  */
+#line 1701 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 261 "parser.y" /* yacc.c:1646  */
+#line 262 "parser.y" /* yacc.c:1646  */
     {
           printf("\nPRINTING: %s\n", (troof_IT[currentIndexofTroof-1] == 1)? "WIN": "FAIL");
         }
-#line 1708 "y.tab.c" /* yacc.c:1646  */
+#line 1709 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 266 "parser.y" /* yacc.c:1646  */
+#line 267 "parser.y" /* yacc.c:1646  */
     {
           printf("\nPRINTING: %f\n", ITValue[currentIndexofIT-1]);
         }
-#line 1716 "y.tab.c" /* yacc.c:1646  */
+#line 1717 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 271 "parser.y" /* yacc.c:1646  */
+#line 272 "parser.y" /* yacc.c:1646  */
     {
           printVariable((yyvsp[0].string));
         }
-#line 1724 "y.tab.c" /* yacc.c:1646  */
+#line 1725 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 276 "parser.y" /* yacc.c:1646  */
+#line 277 "parser.y" /* yacc.c:1646  */
     {
           printf("%s", (yyvsp[0].string));
         }
-#line 1732 "y.tab.c" /* yacc.c:1646  */
+#line 1733 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 285 "parser.y" /* yacc.c:1646  */
+#line 286 "parser.y" /* yacc.c:1646  */
     {
                         int isValid = checkIfValidVariable((yyvsp[-2].string), 1);
                         if (isValid == 1){
@@ -1742,11 +1743,11 @@ yyreduce:
                           exit(0);
                         }
                       }
-#line 1746 "y.tab.c" /* yacc.c:1646  */
+#line 1747 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 296 "parser.y" /* yacc.c:1646  */
+#line 297 "parser.y" /* yacc.c:1646  */
     {
                         int isValid = checkIfValidVariable((yyvsp[-2].string), 3);
                         if (isValid == 1){
@@ -1756,11 +1757,11 @@ yyreduce:
                           exit(0);
                         }
                       }
-#line 1760 "y.tab.c" /* yacc.c:1646  */
+#line 1761 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 307 "parser.y" /* yacc.c:1646  */
+#line 308 "parser.y" /* yacc.c:1646  */
     {
                         int isValid = checkIfValidVariable((yyvsp[-2].string), 2);
                         if (isValid == 1){
@@ -1770,19 +1771,19 @@ yyreduce:
                           exit(0);
                         }
                       }
-#line 1774 "y.tab.c" /* yacc.c:1646  */
+#line 1775 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 320 "parser.y" /* yacc.c:1646  */
+#line 321 "parser.y" /* yacc.c:1646  */
     {
-
+          inputVariable((yyvsp[0].string));
         }
-#line 1782 "y.tab.c" /* yacc.c:1646  */
+#line 1783 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1786 "y.tab.c" /* yacc.c:1646  */
+#line 1787 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2010,7 +2011,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 345 "parser.y" /* yacc.c:1906  */
+#line 346 "parser.y" /* yacc.c:1906  */
 
 main(int argc, char *argv[]){
  var_linkedlist = (SYM *)malloc(sizeof(SYM));

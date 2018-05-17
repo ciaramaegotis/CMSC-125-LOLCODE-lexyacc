@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "symboltable.h"
 extern FILE *yyin;
 int regs[26];
@@ -318,7 +319,7 @@ variable_assignment:  IDENTIFIER R number_expression
 
 input: GIMMEH IDENTIFIER
         {
-
+          inputVariable($2);
         }
 
 
