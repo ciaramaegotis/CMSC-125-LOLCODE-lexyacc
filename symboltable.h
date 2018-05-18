@@ -146,6 +146,7 @@ void inputVariable(char *varname){
 		if (type == 0 || type == 2 || type == 3){
 			char *inputString;
 			inputString = (char *)malloc(sizeof(char)*100);
+			inputString[strlen(inputString) - 1] = '\0';
 		    fflush(stdin);
 		    fgets(inputString, 100, stdin);
 		    fflush(stdin);
@@ -157,29 +158,31 @@ void inputVariable(char *varname){
 		    }else{
 		    	int charCounter = 0;
 		    	int isString = 0;
-		    	while (inputString[charCounter] != '\0'){
-		    		int numCounterPart = inputString[charCounter] - '0';
-		    		if (numCounterPart >= 0 && numCounterPart <= 9){
-		    			charCounter++;
+		    	int stringCounter = 0;
+		    	while (stringCounter < strlen(inputString)){
+		    		int numCounterPart = inputString[charCounter];
+		    		if (numCounterPart >= '0' && numCounterPart <= '9'){
+		    			stringCounter++;
 		    			continue;
 		    		}else if (inputString[charCounter] == '.'){
-		    			charCounter++;
+		    			stringCounter++;
 		    			while (inputString[charCounter] != '\0'){
-		    				int numCounterPart2 = inputString[charCounter] - '0';
-		    				if (numCounterPart2 >= 0 && numCounterPart2 <= 9){
-		    					charCounter++;
+		    				int numCounterPart2 = inputString[charCounter];
+		    				if (numCounterPart2 >= '0' && numCounterPart2 <= '9'){
+		    					stringCounter++;
 		    					continue;
 		    				}else{
 		    					isString = 1;
 		    					break;
 		    				}
-		    				charCounter++;
+		    				stringCounter++;
 		    			}
 		    		}else{
+
 		    			isString = 1;
 		    			break;
 		    		}
-		    		charCounter++;
+		    		stringCounter++;
 		    	}
 		    	if (isString == 1){
 		    		setYarnVar(varname, 2, inputString);
