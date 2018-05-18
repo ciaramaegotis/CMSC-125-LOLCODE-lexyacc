@@ -509,7 +509,7 @@ union yyalloc
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  15
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  58
+#define YYNRULES  59
 /* YYNSTATES -- Number of states.  */
 #define YYNSTATES  125
 
@@ -568,7 +568,7 @@ static const yytype_uint16 yyrline[] =
      223,   230,   236,   242,   253,   260,   270,   272,   282,   284,
      293,   303,   313,   324,   334,   338,   343,   348,   353,   364,
      375,   386,   388,   394,   396,   398,   400,   402,   404,   406,
-     408,   410,   412,   414,   416,   432,   434,   436,   443
+     408,   410,   412,   414,   416,   432,   434,   436,   455,   461
 };
 #endif
 
@@ -641,13 +641,13 @@ static const yytype_int16 yypact[] =
 static const yytype_uint8 yydefact[] =
 {
        0,    34,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,    23,
+       0,    59,     0,     0,     0,     0,     0,     0,     0,    23,
       21,    22,    24,    45,    48,    43,    44,    47,    51,    46,
       50,    52,     0,    49,     1,     0,     0,     0,     0,     0,
-       0,     0,     0,    58,    57,     0,    56,    11,    12,    10,
+       0,     0,     0,    57,    58,     0,    56,    11,    12,    10,
        9,    13,     0,     0,     0,    29,    23,     0,     0,     0,
       42,     0,     0,     2,    53,     0,     0,     0,     0,     0,
-       0,     0,     0,    54,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,    54,    59,     0,     0,     0,     0,     0,
        0,     0,    40,    38,    39,    41,     0,     3,     0,     0,
        0,     0,     0,     0,     0,    55,     0,    26,     0,     0,
        0,    28,    33,    31,    36,     0,     0,    14,    15,    17,
@@ -773,7 +773,7 @@ static const yytype_uint8 yyr1[] =
       64,    64,    64,    64,    65,    65,    65,    65,    65,    65,
       65,    65,    65,    65,    66,    67,    67,    67,    68,    68,
       68,    68,    69,    70,    70,    70,    70,    70,    70,    70,
-      70,    70,    71,    71,    72,    73,    73,    74,    74
+      70,    70,    71,    71,    72,    73,    73,    74,    74,    74
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -784,7 +784,7 @@ static const yytype_uint8 yyr2[] =
        5,     1,     1,     1,     1,     5,     4,     5,     4,     2,
        5,     4,     5,     4,     0,     5,     4,     4,     3,     3,
        3,     3,     2,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     2,     3,     3,     1,     1,     1
+       1,     1,     1,     2,     3,     3,     1,     1,     1,     0
 };
 
 
@@ -1938,15 +1938,37 @@ yyreduce:
   case 57:
 #line 437 "parser.y" /* yacc.c:1646  */
     {
+                      int type = checkIfValidVariableWithoutType((yyvsp[0].string));
+                      if (type == 1){
+                        float floatValue = getValueOfVariableNumber((yyvsp[0].string));
+                        char *floatToString;
+                        floatToString = (char *)malloc(sizeof(char) * 100);
+                        gcvt(floatValue, 100, floatToString);
+                        printf("HEHEHE ITO YUN %s", floatToString);
+                        ++currentIndexofIT;
+                      }else if (type == 2 || type == 3){
+                        yarn_IT[currentIndexofYarn] = (yyvsp[0].string);
+                        ++currentIndexofYarn;
+                        ++lengthOfToBeSmooshed;
+                      }else{
+
+                      }
+                    }
+#line 1958 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 58:
+#line 456 "parser.y" /* yacc.c:1646  */
+    {
                       yarn_IT[currentIndexofYarn] = (yyvsp[0].string);
                       ++currentIndexofYarn;
                       ++lengthOfToBeSmooshed;
                     }
-#line 1946 "y.tab.c" /* yacc.c:1646  */
+#line 1968 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1950 "y.tab.c" /* yacc.c:1646  */
+#line 1972 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2174,7 +2196,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 445 "parser.y" /* yacc.c:1906  */
+#line 463 "parser.y" /* yacc.c:1906  */
 
 main(int argc, char *argv[]){
  var_linkedlist = (SYM *)malloc(sizeof(SYM));

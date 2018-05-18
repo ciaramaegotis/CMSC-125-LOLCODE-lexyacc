@@ -433,14 +433,32 @@ concatenation_loop: end_concatenation AN concatenation_loop
                     |
                     end_concatenation
 
-end_concatenation: YARN_LITERAL
+end_concatenation:  IDENTIFIER
+                    {
+                      int type = checkIfValidVariableWithoutType($1);
+                      if (type == 1){
+                        float floatValue = getValueOfVariableNumber($1);
+                        char *floatToString;
+                        floatToString = (char *)malloc(sizeof(char) * 100);
+                        gcvt(floatValue, 100, floatToString);
+                        printf("HEHEHE ITO YUN %s", floatToString);
+                        ++currentIndexofIT;
+                      }else if (type == 2 || type == 3){
+                        yarn_IT[currentIndexofYarn] = $1;
+                        ++currentIndexofYarn;
+                        ++lengthOfToBeSmooshed;
+                      }else{
+
+                      }
+                    }
+                    |
+                    YARN_LITERAL
                     {
                       yarn_IT[currentIndexofYarn] = $1;
                       ++currentIndexofYarn;
                       ++lengthOfToBeSmooshed;
                     }
                     |
-                    IDENTIFIER
             
 %%
 main(int argc, char *argv[]){
