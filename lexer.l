@@ -55,6 +55,7 @@ extern FILE *yyin;
 (TIL)  {printf("keyword: TIL\n"); return TIL;}
 (WILE)  {printf("keyword: WILE\n"); return WILE;}
 (OUTTA) {printf("keyword: OUTTA\n"); return OUTTA;}
+(MKAY) {printf("keyword: END SMOOSH\n"); return MKAY;}
 ("WIN"|"FAIL") {printf("TROOF LITERAL"); 
 			if (strcmp(yytext, "WIN") == 0){
 				yylval.number = 1;
@@ -71,8 +72,8 @@ extern FILE *yyin;
 (-?[0-9]+\.[0-9]+) {printf("NUMBAR LITERAL"); 
 					yylval.floatnum = atof(yytext);		
 					return NUMBAR;}
-(\".*\") {printf("YARN LITERAL"); 
-		yylval.string = yytext;
+(\"(\\.|[^"\\])*\") {printf("YARN LITERAL"); 
+		yylval.string = strdup(yytext);
 		return YARN_LITERAL;}
 (HAI) {printf("keyword: HAI\n"); return HAI;}
 (KTHXBYE) {printf("keyword: KTHXBYE\n"); return KTHXBYE;}

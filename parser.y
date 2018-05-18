@@ -7,13 +7,16 @@ extern FILE *yyin;
 int regs[26];
 float ITValue[100];
 int troof_IT[100];
+char **yarn_IT;
 int currentIndexofTroof = 0;
 int currentIndexofIT = 0;
+int currentIndexofYarn = 0;
 int isFirstVariable = 1;
+int lengthOfToBeSmooshed = 0;
 %}
 
 
-%token I OUTTA OF AN HAI KTHXBYE HAS A ITZ SUM DIFF QUOSHUNT PRODUKT MOD SMALLR BIGGR R SMOOSH VISIBLE BOTH EITHER NOT WON ANY ALL SAEM DIFFRINT MAEK IS NOW GIMMEH O RLY YA OMG OMGWTF MEBBE NO WAI OIC WILE TIL UPPIN NERFIN WTF IM IN YR RLY_Q WTF_Q
+%token I OUTTA OF AN HAI KTHXBYE HAS A ITZ SUM DIFF QUOSHUNT PRODUKT MOD SMALLR BIGGR R SMOOSH VISIBLE BOTH EITHER NOT WON ANY ALL SAEM DIFFRINT MAEK IS NOW GIMMEH O RLY YA OMG OMGWTF MEBBE NO WAI OIC WILE TIL UPPIN NERFIN WTF IM IN YR RLY_Q WTF_Q MKAY
 %union{
   int number;
   char *string;
@@ -26,12 +29,7 @@ int isFirstVariable = 1;
 %token <string> TROOF_LITERAL
 %token <string> TYPE_LITERAL
 
-%left '|'
-%left '&'
-%left '+' '-'
-%left '*' '/' '%'
-%left UMINUS  /*supplies precedence for unary minus */
-%%                   /* beginning of rules section */
+%% 
 
 program: HAI program_body KTHXBYE
          {
@@ -176,6 +174,9 @@ output: VISIBLE troof_expression
         }
         |
         VISIBLE concatenation
+        {
+          printf("\nPRINTING: %s\n", yarn_IT[currentIndexofYarn-1]);
+        }
 
 number_expression: SUM OF number_expression AN number_expression
                     {
@@ -332,8 +333,7 @@ troof_expression: TROOF_LITERAL
 
 conditional:
 
-
-concatenation:
+              
 
 typecasting: IDENTIFIER IS NOW A TYPE_LITERAL
               {
@@ -413,9 +413,39 @@ program_body: end_case
               |
               program_body end_case
 
+concatenation: SMOOSH concatenation_loop MKAY
+                {
+                  int smooshCounter = 1;
+                  char *finalString;
+                  finalString = (char *)malloc(sizeof(200));
+                  while (smooshCounter <= lengthOfToBeSmooshed){
+                      strcat(finalString, yarn_IT[currentIndexofYarn - (smooshCounter)]);
+                    ++smooshCounter;
+                  
+                  }
+                  yarn_IT[currentIndexofYarn - lengthOfToBeSmooshed] = finalString;
+                  currentIndexofYarn = (currentIndexofYarn - lengthOfToBeSmooshed) + 1;
+                  
+                }
+
+
+concatenation_loop: end_concatenation AN concatenation_loop
+                    |
+                    end_concatenation
+
+end_concatenation: YARN_LITERAL
+                    {
+                      yarn_IT[currentIndexofYarn] = $1;
+                      ++currentIndexofYarn;
+                      ++lengthOfToBeSmooshed;
+                    }
+                    |
+                    IDENTIFIER
+            
 %%
 main(int argc, char *argv[]){
  var_linkedlist = (SYM *)malloc(sizeof(SYM));
+ yarn_IT = (char **)malloc(sizeof(char *) * 100);
  yyin = fopen(argv[1], "r");
  return(yyparse());
 }

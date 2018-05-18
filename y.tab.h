@@ -95,13 +95,13 @@ extern int yydebug;
     YR = 305,
     RLY_Q = 306,
     WTF_Q = 307,
-    IDENTIFIER = 308,
-    NUMBR = 309,
-    NUMBAR = 310,
-    YARN_LITERAL = 311,
-    TROOF_LITERAL = 312,
-    TYPE_LITERAL = 313,
-    UMINUS = 314
+    MKAY = 308,
+    IDENTIFIER = 309,
+    NUMBR = 310,
+    NUMBAR = 311,
+    YARN_LITERAL = 312,
+    TROOF_LITERAL = 313,
+    TYPE_LITERAL = 314
   };
 #endif
 /* Tokens.  */
@@ -155,20 +155,20 @@ extern int yydebug;
 #define YR 305
 #define RLY_Q 306
 #define WTF_Q 307
-#define IDENTIFIER 308
-#define NUMBR 309
-#define NUMBAR 310
-#define YARN_LITERAL 311
-#define TROOF_LITERAL 312
-#define TYPE_LITERAL 313
-#define UMINUS 314
+#define MKAY 308
+#define IDENTIFIER 309
+#define NUMBR 310
+#define NUMBAR 311
+#define YARN_LITERAL 312
+#define TROOF_LITERAL 313
+#define TYPE_LITERAL 314
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 17 "parser.y" /* yacc.c:1909  */
+#line 20 "parser.y" /* yacc.c:1909  */
 
   int number;
   char *string;
