@@ -1603,7 +1603,7 @@ yyreduce:
   case 9:
 #line 157 "parser.y" /* yacc.c:1646  */
     {
-          printf("\nPRINTING: %s\n", (troof_IT[currentIndexofTroof-1] == 1)? "WIN": "FAIL");
+          printf("\n%s\n", (troof_IT[currentIndexofTroof-1] == 1)? "WIN": "FAIL");
         }
 #line 1609 "y.tab.c" /* yacc.c:1646  */
     break;
@@ -1611,7 +1611,7 @@ yyreduce:
   case 10:
 #line 162 "parser.y" /* yacc.c:1646  */
     {
-          printf("\nPRINTING: %f\n", ITValue[currentIndexofIT-1]);
+          printf("\n%f\n", ITValue[currentIndexofIT-1]);
         }
 #line 1617 "y.tab.c" /* yacc.c:1646  */
     break;
@@ -1635,7 +1635,7 @@ yyreduce:
   case 13:
 #line 177 "parser.y" /* yacc.c:1646  */
     {
-          printf("\nPRINTING: %s\n", yarn_IT[currentIndexofYarn-1]);
+          printf("\n%s\n", yarn_IT[currentIndexofYarn-1]);
         }
 #line 1641 "y.tab.c" /* yacc.c:1646  */
     break;

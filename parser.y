@@ -155,12 +155,12 @@ variable_declaration: I HAS A IDENTIFIER
 
 output: VISIBLE troof_expression
         {
-          printf("\nPRINTING: %s\n", (troof_IT[currentIndexofTroof-1] == 1)? "WIN": "FAIL");
+          printf("\n%s\n", (troof_IT[currentIndexofTroof-1] == 1)? "WIN": "FAIL");
         }
         |
         VISIBLE number_expression
         {
-          printf("\nPRINTING: %f\n", ITValue[currentIndexofIT-1]);
+          printf("\n%f\n", ITValue[currentIndexofIT-1]);
         }
         |
         VISIBLE IDENTIFIER
@@ -175,7 +175,7 @@ output: VISIBLE troof_expression
         |
         VISIBLE concatenation
         {
-          printf("\nPRINTING: %s\n", yarn_IT[currentIndexofYarn-1]);
+          printf("\n%s\n", yarn_IT[currentIndexofYarn-1]);
         }
 
 number_expression: SUM OF number_expression AN number_expression

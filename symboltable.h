@@ -104,11 +104,11 @@ void printVariable(char *varname){
 			}else{
 				isFound = 1;
 				if (travel->type == 1){
-					printf("PRINTING: %f\n", travel->floatValue);
+					printf("\n%f\n", travel->floatValue);
 				}else if (travel->type == 2){
-					printf("PRINTING: %s\n", travel->yarnValue);
+					printf("\n%s\n", travel->yarnValue);
 				}else if (travel->type == 3){	
-					printf("PRINTING: %s\n", travel->troofValue);
+					printf("\n%s\n", travel->troofValue);
 				}
 			}
 			isFound = travel->type;
@@ -151,9 +151,9 @@ void inputVariable(char *varname){
 		    fgets(inputString, 100, stdin);
 		    fflush(stdin);
 		    // scanf("%c", &flushChar);
-		    if (strcmp(inputString, "WIN") == 0){
+		    if (strcmp(inputString, "WIN\n") == 0){
 		    	setTroofVar(varname, 3, 1);
-		    }else if (strcmp(inputString, "FAIL") == 0){
+		    }else if (strcmp(inputString, "FAIL\n") == 0){
 		    	setTroofVar(varname, 3, 0);
 		    }else{
 		    	int charCounter = 0;
