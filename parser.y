@@ -259,7 +259,7 @@ troof_expression: TROOF_LITERAL
                   |
                   BOTH OF troof_expression AN troof_expression
                   {
-                    if (troof_IT[currentIndexofTroof-2] == troof_IT[currentIndexofTroof-1]){
+                    if ((troof_IT[currentIndexofTroof-2] == 1) && (troof_IT[currentIndexofTroof-1] == 1)){
                       troof_IT[currentIndexofTroof-2] = 1;
                     }else{
                       troof_IT[currentIndexofTroof-2] = 0;
