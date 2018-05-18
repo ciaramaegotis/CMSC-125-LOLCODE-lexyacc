@@ -180,49 +180,49 @@ output: VISIBLE troof_expression
 
 number_expression: SUM OF number_expression AN number_expression
                     {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] + ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] + ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                     }
                    |
                    DIFF OF number_expression AN number_expression
                    {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] - ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] - ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                    }
                    |
                    PRODUKT OF number_expression AN number_expression
                    {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] * ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] * ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                    }
                    |
                    QUOSHUNT OF number_expression AN number_expression
                    {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] / ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] / ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                    }
                    |
                    MOD OF number_expression AN number_expression
                    {
-                      printf("\nAnswer: %f\n", (int)ITValue[currentIndexofIT-2] % (int)ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = (int) ITValue[currentIndexofIT-2] % (int) ITValue[currentIndexofIT-1];
                       currentIndexofIT--;               
                    }
                    |
                    BIGGR OF number_expression AN number_expression
                    {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] > ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] > ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1];
                       currentIndexofIT--;     
                    }
                    |
                    SMALLR OF number_expression AN number_expression
                    {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] < ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] < ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1];
                       currentIndexofIT--; 
                    }
@@ -441,7 +441,6 @@ end_concatenation:  IDENTIFIER
                         char *floatToString;
                         floatToString = (char *)malloc(sizeof(char) * 100);
                         gcvt(floatValue, 100, floatToString);
-                        printf("HEHEHE ITO YUN %s", floatToString);
                         ++currentIndexofIT;
                       }else if (type == 2 || type == 3){
                         yarn_IT[currentIndexofYarn] = $1;
@@ -462,6 +461,7 @@ end_concatenation:  IDENTIFIER
             
 %%
 main(int argc, char *argv[]){
+  fflush(stdin);
  var_linkedlist = (SYM *)malloc(sizeof(SYM));
  yarn_IT = (char **)malloc(sizeof(char *) * 100);
  yyin = fopen(argv[1], "r");

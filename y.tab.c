@@ -568,7 +568,7 @@ static const yytype_uint16 yyrline[] =
      223,   230,   236,   242,   253,   260,   270,   272,   282,   284,
      293,   303,   313,   324,   334,   338,   343,   348,   353,   364,
      375,   386,   388,   394,   396,   398,   400,   402,   404,   406,
-     408,   410,   412,   414,   416,   432,   434,   436,   455,   461
+     408,   410,   412,   414,   416,   432,   434,   436,   454,   460
 };
 #endif
 
@@ -1643,7 +1643,7 @@ yyreduce:
   case 14:
 #line 182 "parser.y" /* yacc.c:1646  */
     {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] + ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] + ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                     }
@@ -1653,7 +1653,7 @@ yyreduce:
   case 15:
 #line 189 "parser.y" /* yacc.c:1646  */
     {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] - ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] - ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                    }
@@ -1663,7 +1663,7 @@ yyreduce:
   case 16:
 #line 196 "parser.y" /* yacc.c:1646  */
     {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] * ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] * ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                    }
@@ -1673,7 +1673,7 @@ yyreduce:
   case 17:
 #line 203 "parser.y" /* yacc.c:1646  */
     {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] / ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] / ITValue[currentIndexofIT-1];
                       currentIndexofIT--;
                    }
@@ -1683,7 +1683,7 @@ yyreduce:
   case 18:
 #line 210 "parser.y" /* yacc.c:1646  */
     {
-                      printf("\nAnswer: %f\n", (int)ITValue[currentIndexofIT-2] % (int)ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = (int) ITValue[currentIndexofIT-2] % (int) ITValue[currentIndexofIT-1];
                       currentIndexofIT--;               
                    }
@@ -1693,7 +1693,7 @@ yyreduce:
   case 19:
 #line 217 "parser.y" /* yacc.c:1646  */
     {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] > ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] > ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1];
                       currentIndexofIT--;     
                    }
@@ -1703,7 +1703,7 @@ yyreduce:
   case 20:
 #line 224 "parser.y" /* yacc.c:1646  */
     {
-                      printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] < ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1]);
+                      
                       ITValue[currentIndexofIT-2] = ITValue[currentIndexofIT-2] < ITValue[currentIndexofIT-1] ? ITValue[currentIndexofIT-2]: ITValue[currentIndexofIT-1];
                       currentIndexofIT--; 
                    }
@@ -1944,7 +1944,6 @@ yyreduce:
                         char *floatToString;
                         floatToString = (char *)malloc(sizeof(char) * 100);
                         gcvt(floatValue, 100, floatToString);
-                        printf("HEHEHE ITO YUN %s", floatToString);
                         ++currentIndexofIT;
                       }else if (type == 2 || type == 3){
                         yarn_IT[currentIndexofYarn] = (yyvsp[0].string);
@@ -1954,21 +1953,21 @@ yyreduce:
 
                       }
                     }
-#line 1958 "y.tab.c" /* yacc.c:1646  */
+#line 1957 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 456 "parser.y" /* yacc.c:1646  */
+#line 455 "parser.y" /* yacc.c:1646  */
     {
                       yarn_IT[currentIndexofYarn] = (yyvsp[0].string);
                       ++currentIndexofYarn;
                       ++lengthOfToBeSmooshed;
                     }
-#line 1968 "y.tab.c" /* yacc.c:1646  */
+#line 1967 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1972 "y.tab.c" /* yacc.c:1646  */
+#line 1971 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2196,9 +2195,10 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 463 "parser.y" /* yacc.c:1906  */
+#line 462 "parser.y" /* yacc.c:1906  */
 
 main(int argc, char *argv[]){
+  fflush(stdin);
  var_linkedlist = (SYM *)malloc(sizeof(SYM));
  yarn_IT = (char **)malloc(sizeof(char *) * 100);
  yyin = fopen(argv[1], "r");

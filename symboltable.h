@@ -25,7 +25,6 @@ void insertAtHead(SYM *new_var){
 	if (isFound == 0){
 		new_var->next = var_linkedlist;
         var_linkedlist = new_var;
-        printf("New variable: %s", new_var->variable_name);
 	}
 }
 
@@ -147,7 +146,10 @@ void inputVariable(char *varname){
 		if (type == 0 || type == 2 || type == 3){
 			char *inputString;
 			inputString = (char *)malloc(sizeof(char)*100);
-		    scanf("%[^\n]%*c", inputString);
+		    fflush(stdin);
+		    fgets(inputString, 100, stdin);
+		    fflush(stdin);
+		    // scanf("%c", &flushChar);
 		    if (strcmp(inputString, "WIN") == 0){
 		    	setTroofVar(varname, 3, 1);
 		    }else if (strcmp(inputString, "FAIL") == 0){
@@ -187,8 +189,12 @@ void inputVariable(char *varname){
 		    	}
 		    }
 		}else if (type == 1){
-			float inputFloat;
-			scanf("%f", &inputFloat);
+			char *inputString;
+			inputString = (char *)malloc(sizeof(char)*100);
+		    fflush(stdin);
+		    fgets(inputString, 100, stdin);
+		    fflush(stdin);
+		    float inputFloat = atof(inputString);
 			setNumbrVar(varname, 1, inputFloat);
 		}
 	}else{
