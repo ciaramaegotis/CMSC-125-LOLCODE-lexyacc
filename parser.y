@@ -155,6 +155,28 @@ variable_declaration: I HAS A IDENTIFIER
                         }
                       }
 
+output: VISIBLE troof_expression
+        {
+          printf("\nPRINTING: %s\n", (troof_IT[currentIndexofTroof-1] == 1)? "WIN": "FAIL");
+        }
+        |
+        VISIBLE number_expression
+        {
+          printf("\nPRINTING: %f\n", ITValue[currentIndexofIT-1]);
+        }
+        |
+        VISIBLE IDENTIFIER
+        {
+          printVariable($2);
+        }
+        |
+        VISIBLE YARN_LITERAL
+        {
+          printf("%s", $2);
+        }
+        |
+        VISIBLE concatenation
+
 number_expression: SUM OF number_expression AN number_expression
                     {
                       printf("\nAnswer: %f\n", ITValue[currentIndexofIT-2] + ITValue[currentIndexofIT-1]);
@@ -215,6 +237,17 @@ number_expression: SUM OF number_expression AN number_expression
                     ITValue[currentIndexofIT] = $1;
                     ++currentIndexofIT;
                    }
+                   |
+                   IDENTIFIER
+                   {
+                    int type = checkIfValidVariableWithoutType($1);
+                    if (type == 1){
+                      ITValue[currentIndexofIT] = getValueOfVariableNumber($1);
+                      ++currentIndexofIT;
+                    }else{
+                      printf("Syntax error. Invalid value.");
+                    }
+                   }
 
 troof_expression: TROOF_LITERAL
                   {
@@ -255,32 +288,67 @@ troof_expression: TROOF_LITERAL
                       troof_IT[currentIndexofTroof-1] = 1;
                     }
                   }
+                  |
+                  BOTH SAEM troof_expression AN troof_expression
+                  {
+                    if (troof_IT[currentIndexofTroof-2] == troof_IT[currentIndexofTroof-1]){
+                      troof_IT[currentIndexofTroof-2] = 1;
+                    }else{
+                      troof_IT[currentIndexofTroof-2] = 0;
+                    }
+                    currentIndexofTroof--;
+                  }
+                  |
+                  DIFFRINT troof_expression AN troof_expression
+                  {
+                    if (troof_IT[currentIndexofTroof-2] != troof_IT[currentIndexofTroof-1]){
+                      troof_IT[currentIndexofTroof-2] = 1;
+                    }else{
+                      troof_IT[currentIndexofTroof-2] =  0;
+                    }
+                    currentIndexofTroof--;
+                  }
+                  |
+                  BOTH SAEM number_expression AN number_expression
+                  {
+                    if (ITValue[currentIndexofIT-2] == ITValue[currentIndexofIT-1]){
+                      printf("%i vs %i", ITValue[currentIndexofIT-2], ITValue[currentIndexofIT-1]);
+                      ITValue[currentIndexofIT-2] = 1;
+                    }else{
+                      ITValue[currentIndexofIT-2] = 0;
+                    }
+                    currentIndexofIT--;
+                  }
+                  |
+                  DIFFRINT number_expression AN number_expression
+                  {
+                    if (ITValue[currentIndexofIT-2] != ITValue[currentIndexofIT-1]){
+                      ITValue[currentIndexofIT-2] = 1;
+                    }else{
+                      ITValue[currentIndexofIT-2] = 0;
+                    }
+                    currentIndexofIT--;
+                  }
 
 conditional:
 
-output: VISIBLE troof_expression
-        {
-          printf("\nPRINTING: %s\n", (troof_IT[currentIndexofTroof-1] == 1)? "WIN": "FAIL");
-        }
-        |
-        VISIBLE number_expression
-        {
-          printf("\nPRINTING: %f\n", ITValue[currentIndexofIT-1]);
-        }
-        |
-        VISIBLE IDENTIFIER
-        {
-          printVariable($2);
-        }
-        |
-        VISIBLE YARN_LITERAL
-        {
-          printf("%s", $2);
-        }
-        |
-        VISIBLE concatenation
 
 concatenation:
+
+typecasting: IDENTIFIER IS NOW A TYPE_LITERAL
+              {
+
+              }
+              |
+              MAEK IDENTIFIER A TYPE_LITERAL
+              {
+
+              }
+              |
+              MAEK IDENTIFIER A TYPE_LITERAL
+              {
+
+              }
 
 variable_assignment:  IDENTIFIER R number_expression
                       {
@@ -338,6 +406,8 @@ end_case: number_expression
           concatenation
           |
           input
+          |
+          typecasting
 
 program_body: end_case
               |
